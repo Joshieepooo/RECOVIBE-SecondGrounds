@@ -1,0 +1,25 @@
+# robots.txt for RecoVibe
+User-agent: *
+
+# Allow public entry points and portal logins
+Allow: /FirstPage.html
+Allow: /UserStudent/StudentLogin.html
+Allow: /UserStudent/StudentRegistration.html
+Allow: /UserTeacher/TeacherLogin.html
+Allow: /UserEventOrganizer/EventOrganizerLogin.html
+Allow: /UserAdmin/AdminLogin.html
+Allow: /UserSuperAdmin/SuperAdminLogin.html
+
+# Disallow admin, superadmin, and authentication-sensitive pages
+Disallow: /UserAdmin/
+Disallow: /UserSuperAdmin/
+Disallow: /*ForgetPassword.html
+Disallow: /*VerifyCode.html
+Disallow: /*ResetPassword.html
+Disallow: /*reset-password.html
+Disallow: /*verify-code.html
+Disallow: /*password-reset-success.html
+
+# Sitemap location (replace with your actual production domain when deployed)
+Sitemap: https://yourdomain.com/sitemap.xml
+

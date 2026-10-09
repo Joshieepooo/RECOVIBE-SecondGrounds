@@ -1,0 +1,237 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function owns(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function profileHasRole(profile, roles) {
+      return profile.get('role', '') in roles || profile.get('userRole', '') in roles;
+    }
+
+    function isSuperAdmin() {
+      let adminProfile = /databases/$(database)/documents/adminUser/$(request.auth.uid);
+      let userProfile = /databases/$(database)/documents/users/$(request.auth.uid);
+      return signedIn() && (
+        (exists(adminProfile) && profileHasRole(get(adminProfile).data, ['Super Admin', 'SuperAdmin', 'superadmin', 'super admin'])) ||
+        (exists(userProfile) && profileHasRole(get(userProfile).data, ['Super Admin', 'SuperAdmin', 'superadmin', 'super admin']))
+      );
+    }
+
+    function canManageEvents() {
+      let adminProfile = /databases/$(database)/documents/adminUser/$(request.auth.uid);
+      let userProfile = /databases/$(database)/documents/users/$(request.auth.uid);
+      let roles = ['Admin', 'admin', 'EO', 'eo', 'Event Organizer', 'event organizer', 'Teacher', 'teacher', 'Super Admin', 'SuperAdmin', 'superadmin', 'super admin'];
+      return signedIn() && (
+        (exists(adminProfile) && profileHasRole(get(adminProfile).data, roles)) ||
+        (exists(userProfile) && profileHasRole(get(userProfile).data, roles))
+      );
+    }
+
+    function protectedProfileFields() {
+      return ['uid', 'role', 'userRole', 'accountNo', 'accountId', 'studentNumber', 'status', 'isActive'];
+    }
+
+    function accountIdMatchesProfile(accountNo, accountType, uid) {
+      let accountId = /databases/$(database)/documents/account_ids/$(accountNo);
+      let studentClaim = /databases/$(database)/documents/student_number_claims/$(accountNo);
+      return accountType == 'Student'
+        ? accountNo is string &&
+          existsAfter(studentClaim) &&
+          getAfter(studentClaim).data.studentNumber == accountNo &&
+          getAfter(studentClaim).data.createdBy == request.auth.uid &&
+          getAfter(studentClaim).data.uid == uid &&
+          getAfter(studentClaim).data.state == 'active'
+        : accountNo is string &&
+          existsAfter(accountId) &&
+          getAfter(accountId).data.accountType == accountType &&
+          getAfter(accountId).data.createdBy == request.auth.uid &&
+          getAfter(accountId).data.uid == uid &&
+          getAfter(accountId).data.state == 'active';
+    }
+
+    function accountProfileMatchesId(accountNo, accountType, uid) {
+      let studentProfile = /databases/$(database)/documents/studentUser/$(uid);
+      let staffProfile = /databases/$(database)/documents/adminUser/$(uid);
+      return accountType == 'Student'
+        ? existsAfter(studentProfile) &&
+          getAfter(studentProfile).data.accountNo == accountNo &&
+          getAfter(studentProfile).data.uid == uid
+        : existsAfter(staffProfile) &&
+          getAfter(staffProfile).data.accountNo == accountNo &&
+          getAfter(staffProfile).data.uid == uid;
+    }
+
+    function sequenceIsBackedByNewAccount(sequenceType, accountNo) {
+      let accountId = /databases/$(database)/documents/account_ids/$(accountNo);
+      return accountNo is string &&
+        !exists(accountId) &&
+        existsAfter(accountId) &&
+        getAfter(accountId).data.state == 'active' &&
+        ((sequenceType == 'eventOrganizer' && getAfter(accountId).data.accountType == 'EO') ||
+         (sequenceType == 'teacher' && getAfter(accountId).data.accountType == 'Teacher') ||
+         (sequenceType == 'admin' && getAfter(accountId).data.accountType == 'Admin') ||
+         (sequenceType == 'superAdmin' && getAfter(accountId).data.accountType == 'SuperAdmin')) &&
+        accountIdMatchesProfile(
+          accountNo,
+          getAfter(accountId).data.accountType,
+          getAfter(accountId).data.uid
+        );
+    }
+
+    function studentClaimMatchesProfile(studentNumber, uid) {
+      let studentClaim = /databases/$(database)/documents/student_number_claims/$(studentNumber);
+      let studentProfile = /databases/$(database)/documents/studentUser/$(uid);
+      return studentNumber is string &&
+        existsAfter(studentClaim) &&
+        getAfter(studentClaim).data.studentNumber == studentNumber &&
+        getAfter(studentClaim).data.createdBy == request.auth.uid &&
+        getAfter(studentClaim).data.uid == uid &&
+        getAfter(studentClaim).data.state == 'active' &&
+        existsAfter(studentProfile) &&
+        getAfter(studentProfile).data.studentNumber == studentNumber &&
+        getAfter(studentProfile).data.uid == uid;
+    }
+
+    match /studentUser/{uid} {
+      allow get: if owns(uid) || isSuperAdmin();
+      allow list: if isSuperAdmin();
+      allow create: if (isSuperAdmin() || owns(uid)) &&
+        request.resource.data.uid == uid &&
+        request.resource.data.studentNumber == request.resource.data.accountNo &&
+        request.resource.data.role == 'student' &&
+        studentClaimMatchesProfile(request.resource.data.studentNumber, uid);
+      allow update: if isSuperAdmin() || (
+        owns(uid) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(protectedProfileFields())
+      );
+      allow delete: if isSuperAdmin();
+    }
+
+    match /adminUser/{uid} {
+      allow get: if owns(uid) || isSuperAdmin();
+      allow list: if isSuperAdmin();
+      allow create: if isSuperAdmin() &&
+        request.resource.data.uid == uid &&
+        request.resource.data.role in ['EO', 'Teacher', 'Admin', 'Super Admin'] &&
+        accountIdMatchesProfile(
+          request.resource.data.accountNo,
+          request.resource.data.accountType,
+          uid
+        );
+      allow update: if isSuperAdmin() || (
+        owns(uid) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(protectedProfileFields()) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['organization', 'title', 'roleSuffix'])
+      );
+      allow delete: if isSuperAdmin();
+    }
+
+    match /users/{uid} {
+      allow get: if owns(uid) || isSuperAdmin();
+      allow list: if isSuperAdmin();
+      allow create: if false;
+      allow update: if isSuperAdmin() || (
+        owns(uid) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(protectedProfileFields())
+      );
+      allow delete: if isSuperAdmin();
+    }
+
+    match /student_number_claims/{studentNumber} {
+      allow get: if signedIn();
+      allow list: if isSuperAdmin();
+      allow create: if signedIn() &&
+        request.resource.data.keys().hasOnly(['studentNumber', 'createdBy', 'uid', 'state', 'createdAt']) &&
+        request.resource.data.studentNumber == studentNumber &&
+        request.resource.data.studentNumber.matches('^[0-9]{4}-[0-9]{5}-[A-Za-z]{2}-[0-9]$') &&
+        request.resource.data.createdBy == request.auth.uid &&
+        request.resource.data.uid is string &&
+        request.resource.data.state == 'active' &&
+        studentClaimMatchesProfile(studentNumber, request.resource.data.uid);
+      allow update, delete: if false;
+    }
+
+    match /account_ids/{accountNo} {
+      allow read: if isSuperAdmin();
+      allow create: if isSuperAdmin() &&
+        request.resource.data.accountNo == accountNo &&
+        request.resource.data.createdBy == request.auth.uid &&
+        request.resource.data.uid is string &&
+        request.resource.data.state == 'active' &&
+        request.resource.data.accountType in ['Student', 'EO', 'EventOrganizer', 'Teacher', 'Admin', 'SuperAdmin'] &&
+        accountProfileMatchesId(
+          accountNo,
+          request.resource.data.accountType,
+          request.resource.data.uid
+        );
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    match /id_sequences/{sequenceType} {
+      allow read: if isSuperAdmin();
+      allow create: if isSuperAdmin() &&
+        sequenceType in ['eventOrganizer', 'teacher', 'admin', 'superAdmin'] &&
+        request.resource.data.keys().hasOnly(['value', 'lastAccountNo', 'updatedAt']) &&
+        request.resource.data.value is int &&
+        request.resource.data.value >= 1 &&
+        sequenceIsBackedByNewAccount(
+          sequenceType,
+          request.resource.data.lastAccountNo
+        );
+      allow update: if isSuperAdmin() &&
+        sequenceType in ['eventOrganizer', 'teacher', 'admin', 'superAdmin'] &&
+        request.resource.data.keys().hasOnly(['value', 'lastAccountNo', 'updatedAt']) &&
+        (
+          request.resource.data.value > resource.data.value ||
+          !resource.data.keys().hasAny(['lastAccountNo']) ||
+          !exists(/databases/$(database)/documents/account_ids/$(resource.data.get('lastAccountNo', ''))) ||
+          get(/databases/$(database)/documents/account_ids/$(resource.data.get('lastAccountNo', ''))).data.state != 'active'
+        ) &&
+        sequenceIsBackedByNewAccount(
+          sequenceType,
+          request.resource.data.lastAccountNo
+        );
+      allow delete: if false;
+    }
+
+    match /id_reservations/{reservationId} {
+      allow read, write: if false;
+    }
+
+    match /events/{eventId} {
+      allow read: if true;
+      allow create, update: if canManageEvents();
+      allow delete: if isSuperAdmin() || (
+        signedIn() &&
+        exists(/databases/$(database)/documents/adminUser/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/adminUser/$(request.auth.uid)).data.role == 'Admin'
+      );
+    }
+
+    match /notifications/{notificationId} {
+      allow read, write: if signedIn();
+    }
+
+    match /audit_logs/{logId} {
+      allow read, write: if isSuperAdmin();
+    }
+
+    match /system_settings/{settingId} {
+      allow read, write: if isSuperAdmin();
+    }
+
+    match /{collection}/{document=**} {
+      allow read, write: if signedIn() && !(collection in [
+        'studentUser', 'adminUser', 'users', 'account_ids',
+        'id_sequences', 'id_reservations', 'events', 'notifications',
+        'audit_logs', 'system_settings'
+      ]);
+    }
+  }
+}

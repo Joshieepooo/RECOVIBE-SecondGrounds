@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>All Campus Events | RecoVibe Admin Portal</title>
+    <meta name="description" content="Manage and oversee all university, faculty, and student organization events across PUP Biñan Campus." />
+    <link rel="canonical" href="https://yourdomain.com/UserAdmin/AdminAllEvents.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="AdminAllEvents.css" />
+  </head>
+  <body>
+    <div class="admin-app">
+      <aside class="admin-sidebar">
+        <a class="admin-brand" href="AdminDashboard.html"
+          ><span class="admin-brand-mark">RV</span
+          ><span
+            ><strong>RECOVIBE</strong><small>PUP Biñan Campus</small></span
+          ></a
+        >
+        <nav aria-label="Admin navigation">
+          <a href="AdminDashboard.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" /></svg>
+            <span>Dashboard</span>
+          </a>
+          <a class="active" href="AdminAllEvents.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M7 8h10M7 12h10M7 16h6" /></svg>
+            <span>All Events</span>
+          </a>
+          <a href="AdminApproval.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
+            <span>Approval Queue</span>
+            <span class="admin-badge" data-queue-count hidden></span>
+          </a>
+          <a href="AdminCalendar.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+            <span>Calendar</span>
+          </a>
+          <a href="AdminNotification.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" /></svg>
+            <span>Notifications</span>
+            <span class="admin-badge" data-notification-count hidden></span>
+          </a>
+          <a href="AdminProfile.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" /><path d="M4.5 20a7.5 7.5 0 0 1 15 0" /></svg>
+            <span>Profile</span>
+          </a>
+        </nav>
+        <footer>
+          <span class="admin-avatar" data-avatar>HA</span>
+          <span class="admin-user">
+            <strong data-name>ADMIN</strong>
+            <small data-role>Head of Academic Programs</small>
+          </span>
+          <a class="admin-logout" href="AdminLogin.html" aria-label="Logout" title="Logout">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M13 4h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6" /></svg>
+          </a>
+        </footer>
+      </aside>
+      <main class="admin-main">
+        <header class="admin-page-heading">
+          <div>
+            <p class="admin-eyebrow">ADMINISTRATION</p>
+            <h1>All Events</h1>
+          </div>
+          <p class="admin-today">Today / <strong data-today></strong></p>
+        </header>
+        <section class="admin-content" id="allEventsRoot" aria-live="polite">
+          <div class="admin-loading">Loading events…</div>
+        </section>
+      </main>
+    </div>
+    <div class="admin-toast" role="status" aria-live="polite" hidden></div>
+    <script src="../EventDetailsModal.js"></script>
+    <script type="module" src="AdminAllEvents.js"></script>
+  </body>
+</html>

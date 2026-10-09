@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Sign In | RecoVibe - PUP Biñan Campus</title>
+    <meta name="description" content="Sign in to the RecoVibe Administrator Portal to manage event approvals, venues, and campus schedules." />
+    <link rel="canonical" href="https://yourdomain.com/UserAdmin/AdminLogin.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="AdminLogin.css" />
+  </head>
+  <body>
+    <div class="screen" id="adminLoginPage">
+      <div class="side">
+        <img class="mark" src="../UserStudent/Picture/PUPLogo-removebg-preview.png" alt="Polytechnic University of the Philippines Bi&#241;an Campus Seal - RecoVibe" width="80" height="80" decoding="async" loading="lazy" />
+        <div>
+          <h1>RecoVibe Admin Portal</h1>
+          <p class="tagline">University, Organization, and Seminar Events.</p>
+        </div>
+      </div>
+      <main class="main">
+        <div class="card">
+          <a href="../FirstPage.html" class="back-link"
+            >&larr; Back to portal selection</a
+          >
+          <h2>Sign in</h2>
+          <p class="sub">Use your email and portal password.</p>
+          <div class="banner" id="login-banner"></div>
+          <div class="field" id="field-email">
+            <label for="login-email">Email</label>
+            <input
+              type="email"
+              id="login-email"
+              placeholder="Enter your email address"
+              autocomplete="email"
+              inputmode="email"
+              autocapitalize="none"
+              spellcheck="false"
+            />
+            <div class="error-msg">Enter a valid email address.</div>
+          </div>
+          <div class="field password-field" id="field-pass">
+            <label for="login-pass">Password</label>
+            <input
+              type="password"
+              id="login-pass"
+              placeholder="••••••••"
+              autocomplete="current-password"
+            />
+            <button
+              type="button"
+              class="pass-toggle"
+              id="pass-toggle"
+              aria-label="Show password"
+              aria-pressed="false"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+            <div class="error-msg">Enter your password.</div>
+          </div>
+          <div class="row-between">
+            <span></span>
+            <a href="../UserStudent/ForgetPassword.html" class="link-btn"
+              >Forgot password?</a
+            >
+          </div>
+          <button type="button" class="btn-primary" id="login-submit">
+            Sign in
+          </button>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="AdminLogin.js"></script>
+  </body>
+</html>

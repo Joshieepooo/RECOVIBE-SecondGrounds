@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Entrance / Portal Selection -->
+  <url>
+    <loc>https://yourdomain.com/FirstPage.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Student Portal Entry -->
+  <url>
+    <loc>https://yourdomain.com/UserStudent/StudentLogin.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/UserStudent/StudentRegistration.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Teacher Portal Entry -->
+  <url>
+    <loc>https://yourdomain.com/UserTeacher/TeacherLogin.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Event Organizer Portal Entry -->
+  <url>
+    <loc>https://yourdomain.com/UserEventOrganizer/EventOrganizerLogin.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Admin & SuperAdmin Portal Logins -->
+  <url>
+    <loc>https://yourdomain.com/UserAdmin/AdminLogin.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/UserSuperAdmin/SuperAdminLogin.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
+

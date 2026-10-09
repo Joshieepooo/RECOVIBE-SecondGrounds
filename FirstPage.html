@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RecoVibe - Choose Portal | PUP Biñan Campus Event Platform</title>
+    <meta name="description" content="Access RecoVibe, the centralized campus event management and recommendation portal for PUP Biñan Campus. Select your portal to continue." />
+    <link rel="canonical" href="https://yourdomain.com/FirstPage.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="FirstPage.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://yourdomain.com/#website",
+          "url": "https://yourdomain.com/FirstPage.html",
+          "name": "RecoVibe",
+          "description": "University, Organization, and Seminar Events Platform for PUP Biñan Campus with AI recommendations and calendar synchronization.",
+          "publisher": {
+            "@id": "https://yourdomain.com/#organization"
+          }
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "@id": "https://yourdomain.com/#organization",
+          "name": "Polytechnic University of the Philippines - Biñan Campus",
+          "url": "https://yourdomain.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://yourdomain.com/UserStudent/Picture/PUPLogo-removebg-preview.png"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Biñan",
+            "addressRegion": "Laguna",
+            "addressCountry": "PH"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://yourdomain.com/#app",
+          "name": "RecoVibe",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "All modern browsers",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "PHP"
+          },
+          "description": "Smart campus event management, automated venue conflict detection, weather contingency notices, and personalized event recommendation system."
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <main class="portal-page" id="portalPage">
+      <section
+        class="portal-intro"
+        id="portalIntro"
+        aria-labelledby="portalTitle"
+      >
+        <img class="portal-logo" id="portalLogo" src="UserStudent/Picture/PUPLogo-removebg-preview.png" alt="Polytechnic University of the Philippines Bi&#241;an Campus Seal - RecoVibe" width="78" height="78" decoding="async" fetchpriority="high" />
+        <div class="portal-copy">
+          <p class="portal-eyebrow" id="portalEyebrow">PUP Biñan Campus</p>
+          <h1 id="portalTitle">RecoVibe<br />Portal</h1>
+          <p id="portalDescription">
+            University, Organization, and Seminar Events.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="portal-choice"
+        id="portalChoice"
+        aria-labelledby="portalChoiceTitle"
+      >
+        <div class="portal-choice-inner">
+          <p class="portal-eyebrow" id="portalChoiceEyebrow">
+            Welcome to RecoVibe
+          </p>
+          <h2 id="portalChoiceTitle">Choose your portal</h2>
+          <p class="portal-choice-description" id="portalChoiceDescription">
+            Select the account type you use to continue.
+          </p>
+          <div class="portal-options" id="portalOptions">
+            <a
+              class="portal-option"
+              id="studentPortalButton"
+              href="UserStudent/StudentLogin.html"
+              data-portal-role="student"
+            >
+              <span class="portal-option-icon" aria-hidden="true"
+                ><svg viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="8"
+                    r="3.5"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                  <path
+                    d="M5.5 20a6.5 6.5 0 0 1 13 0"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  /></svg
+              ></span>
+              <span class="portal-option-copy"
+                ><strong id="studentPortalLabel">Student</strong
+                ><small id="studentPortalDescription"
+                  >Sign in to discover events and manage participation.</small
+                ></span
+              >
+              <span class="portal-option-arrow" aria-hidden="true"
+                >&#8594;</span
+              >
+            </a>
+            <a
+              class="portal-option"
+              id="teacherPortalButton"
+              href="UserTeacher/TeacherLogin.html"
+              data-portal-role="teacher"
+            >
+              <span class="portal-option-icon" aria-hidden="true"
+                ><svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 19.5V5.8A1.8 1.8 0 0 1 5.8 4h12.4A1.8 1.8 0 0 1 20 5.8v13.7"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M4 19.5c0-1 1-1.8 2-1.8h14M8 8h8M8 12h6"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  /></svg
+              ></span>
+              <span class="portal-option-copy"
+                ><strong id="teacherPortalLabel">Teacher</strong
+                ><small id="teacherPortalDescription"
+                  >View campus events and manage faculty activity.</small
+                ></span
+              >
+              <span class="portal-option-arrow" aria-hidden="true"
+                >&#8594;</span
+              >
+            </a>
+            <a
+              class="portal-option"
+              id="organizerPortalButton"
+              href="UserEventOrganizer/EventOrganizerLogin.html"
+              data-portal-role="event-organizer"
+            >
+              <span class="portal-option-icon" aria-hidden="true"
+                ><svg viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="4"
+                    y="5"
+                    width="16"
+                    height="15"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+                  <path
+                    d="M8 3v4M16 3v4M4 10h16M8 14h3M8 17h6"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                  /></svg
+              ></span>
+              <span class="portal-option-copy"
+                ><strong id="organizerPortalLabel">Event Organizer</strong
+                ><small id="organizerPortalDescription"
+                  >Create, publish, and manage university events.</small
+                ></span
+              >
+              <span class="portal-option-arrow" aria-hidden="true"
+                >&#8594;</span
+              >
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="FirstPage.js"></script>
+  </body>
+</html>

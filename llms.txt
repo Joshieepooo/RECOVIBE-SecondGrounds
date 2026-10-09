@@ -1,0 +1,30 @@
+# RecoVibe
+
+> RecoVibe is the centralized event management, calendar synchronization, and AI-powered recommendation platform designed specifically for Polytechnic University of the Philippines (PUP) Biñan Campus.
+
+## Core Information
+- **Institution**: Polytechnic University of the Philippines – Biñan Campus
+- **Purpose**: Facilitating student discovery of academic seminars, sports, cultural activities, and student organization events, while providing faculty and administrators with automated conflict detection, approval tracking, and attendance verification.
+- **Entry URL**: [FirstPage.html](file:///c:/xampp/htdocs/RecoVibe-main/push-and-pull-master/FirstPage.html)
+- **Full Specification**: [llms-full.txt](file:///c:/xampp/htdocs/RecoVibe-main/push-and-pull-master/llms-full.txt)
+
+## User Portals
+- **Student Portal** ([UserStudent/StudentLogin.html](file:///c:/xampp/htdocs/RecoVibe-main/push-and-pull-master/UserStudent/StudentLogin.html)): Discover campus events, view personalized event recommendations, track event participation history, and synchronize with the official PUP academic calendar.
+- **Teacher / Faculty Portal** ([UserTeacher/TeacherLogin.html](file:///c:/xampp/htdocs/RecoVibe-main/push-and-pull-master/UserTeacher/TeacherLogin.html)): Create departmental and faculty events, monitor student participant rosters, and utilize venue conflict detection and outdoor weather contingency alerts.
+- **Event Organizer Portal** ([UserEventOrganizer/EventOrganizerLogin.html](file:///c:/xampp/htdocs/RecoVibe-main/push-and-pull-master/UserEventOrganizer/EventOrganizerLogin.html)): Submit organization event proposals, track multi-stage administrative approvals (HAP 1, HAP 2, HAP 3), manage venue capacities, and coordinate registrations.
+- **Admin Portal** ([UserAdmin/AdminLogin.html](file:///c:/xampp/htdocs/RecoVibe-main/push-and-pull-master/UserAdmin/AdminLogin.html)): Review and approve/decline event submissions across HAP stages, oversee master campus venue schedules, and resolve scheduling collisions.
+- **Super Admin Portal** ([UserSuperAdmin/SuperAdminLogin.html](file:///c:/xampp/htdocs/RecoVibe-main/push-and-pull-master/UserSuperAdmin/SuperAdminLogin.html)): System administration, RBAC user role assignments (Student, Teacher, Event Organizer, Admin), system parameters, and detailed audit logging (*Who, What, When, Record, Changes*).
+
+## Key Features
+- **AI Recommendation Engine**: Personalized event feed tailored to student year, department, registered student organization (e.g. IBITS), and interest tags.
+- **PUP Calendar Synchronization**: Dynamic calendar integration displaying exams, university holidays, and institutional events alongside student activities.
+- **Smart Conflict Detection**: Real-time validation preventing double-booking of physical campus venues for overlapping dates and times.
+- **Weather Contingency System**: Automatic weather tracking indicating "Might Rain" flags for open-air and outdoor venues, supporting emergency rescheduling and notifications.
+- **Multi-Stage Approval Workflow**: Structured event clearance (HAP 1 to HAP 3) ensuring campus policy compliance before public publication.
+- **Audit Logs**: Forensic logging tracking security actions, record creations, role elevations, and status updates.
+
+## Technical Architecture
+- **Frontend**: Responsive HTML5, Vanilla JavaScript (ES modules), CSS3 with modern CSS custom properties and Flexbox/CSS Grid layouts.
+- **Backend / Authentication**: Firebase Authentication & Cloud Firestore integration with client-side localStorage state persistence fallbacks.
+- **Security & SEO**: Strict Content Security Policy (CSP), HSTS, canonical URL tags, descriptive schema.org JSON-LD structured data, responsive viewports, and clean URL rewrites.
+

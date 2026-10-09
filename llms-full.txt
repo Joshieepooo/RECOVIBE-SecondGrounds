@@ -1,0 +1,62 @@
+# RecoVibe - Full System Documentation
+
+## Overview
+RecoVibe is a specialized university event management, recommendation, and scheduling system developed for the Polytechnic University of the Philippines (PUP) Biñan Campus.
+
+## Team Structure & Development Responsibilities
+- **Team Lead & Frontend/UI**: Joshua (System Architecture, Wireframing, UX, ERD & DFD, Use Case Diagrams, GitHub Repository)
+- **AI & Calendar**: Christian (Calendar logic, AI recommendations, Data Integration)
+- **Backend, Database & Security**: Joyce & Warren (Database Architecture, Security, Authentication, Deployment)
+- **Quality Assurance & Documentation**: Katrina (Testing Plan, Bug Reports, Demo Accounts, Roadmap)
+
+## Detailed Feature Specifications
+
+### 1. Student Portal
+- **Authentication**: Registration with student ID, university email, password, contact number, year level, department, and student organization affiliation. Password reset mechanism with verification codes.
+- **Personalized Event Feed**: Dynamic event prioritization where organization members (e.g. IBITS) see relevant organizational events by default.
+- **Events Catalog**: Multi-attribute filtering by source (PUP Official, CSC, Teacher/Faculty, Organizational), category (Academic, Tech, Leadership, Sports, Cultural), date range, and seat availability.
+- **Interactive Calendar**: Grid and monthly schedule views synchronized with official PUP academic milestones and national holidays.
+- **Participation Tracker**: History of attended and registered events, attendance validation, and certificate tracking.
+- **Profile Preferences**: Custom preference sliders and toggles for recommendation filtering.
+
+### 2. Teacher / Faculty Portal
+- **Dashboard**: High-level glance at department events, participant attendance rosters, and pending event schedules.
+- **Faculty Event Creation**: Direct event proposal with automatic venue collision checks and capacity thresholds.
+- **Weather Contingency**: Alerts for outdoor venues ("Might Rain" indicator) with quick rescheduling and participant notification triggers.
+- **Attendance Oversight**: Roster verification of students attending department seminars and workshops.
+
+### 3. Event Organizer Portal
+- **Dashboard**: Visual progress bar for multi-stage approvals (HAP 1, HAP 2, HAP 3).
+- **Event Submission**: Forms capturing event title, organizer credentials, date/time, venue selection, max capacity, requirements, and document attachments (PDF/DOC).
+- **Conflict Detection Engine**: Validates date/time and venue availability against both existing approved events and official university calendar entries.
+- **Publication Control**: Safeguards ensuring events cannot be published publicly until all 3 HAP stages are approved by administrators.
+
+### 4. Admin Portal
+- **Approval Queue**: Review portal for evaluating student organization and faculty event proposals. Detailed views of attached documents, speaker profiles, and venue requests.
+- **Master Calendar**: Complete visibility of all reserved campus spaces and active events.
+- **Certificate Generation**: Post-event certificate generation capability for participants.
+
+### 5. Super Admin Portal
+- **User Role Management**: Full RBAC interface to manage, activate, deactivate, and assign user roles (Student, Teacher, Event Organizer, Admin).
+- **Audit Logs**: Immutable activity logging capturing:
+  - Actor (*Who performed the action*)
+  - Operation (*What occurred: create, update, delete, approve, reject*)
+  - Timestamp (*When the action took place*)
+  - Target Entity (*Which record or user account was altered*)
+  - Delta (*What specific data fields changed*)
+- **System Settings**: Global configuration for venue lists, event categories, session timeouts, and calendar synchronization parameters.
+
+## Data Storage & Schema Contract
+The system operates on modular data services with Cloud Firestore and local persistence contracts:
+- `recovibeAccounts`: Stores user profiles, credentials, department, and preferences.
+- `recovibeOrganizerEvents`: Stores event definitions, dates, times, venues, capacities, and approval states (`hap1Approved`, `hap2Approved`, `hap3Approved`, `status`, `published`, `cancelled`).
+- `holidayService`: Integrates Google Calendar API / PUP official academic calendar feeds.
+- `calendarDataService`: Centralized abstraction layer for schedule retrieval and conflict checks.
+
+## SEO, Core Web Vitals & Web Server Configuration
+- Canonical tags are enforced across all 57 pages using `https://yourdomain.com/` as base domain.
+- Clean URL slugs are supported via `.htaccess` rewriting (`/FirstPage` -> `/FirstPage.html`).
+- HTTPS is strictly enforced via 301 redirects with local development safety overrides.
+- Structured data (`WebSite`, `CollegeOrUniversity`, `SoftwareApplication`, `CollectionPage`, `WebPage`) implemented via JSON-LD.
+- All image assets optimized with explicit dimensions, asynchronous decoding, and lazy loading.
+

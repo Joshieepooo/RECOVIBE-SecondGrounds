@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="google-calendar-api-key" content="YOUR_GOOGLE_CALENDAR_API_KEY" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Create New Event | RecoVibe Event Organizer Portal</title>
+    <meta name="description" content="Create student organization events with automated venue conflict detection, capacity planning, and weather contingency checks." />
+    <link rel="canonical" href="https://yourdomain.com/UserEventOrganizer/EventOrganizerCreateEvent.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="EventOrganizerCreateEvent.css" />
+    <link rel="stylesheet" href="../UserTeacher/TeacherCreate.css" />
+    <link rel="stylesheet" href="OrganizerNotificationBadge.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="caret" viewBox="0 0 14 10">
+        <path d="M0 0h14L7 10z" fill="currentColor" />
+      </symbol>
+    </svg>
+
+    <div class="organizer-app">
+      <aside class="organizer-sidebar">
+        <div class="organizer-brand">
+          <span class="organizer-brand-mark">RV</span>
+          <span class="organizer-brand-copy"
+            ><strong>RecoVibe</strong><small>PUP Biñan Campus</small></span
+          >
+        </div>
+        <nav class="nav" id="notificationNavigation" aria-label="Primary">
+          <a class="nav-item" href="EventOrganizerDashBoard.html"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" fill="none">
+                <rect
+                  x="2.5"
+                  y="2.5"
+                  width="6.5"
+                  height="6.5"
+                  rx="1.3"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                />
+                <rect
+                  x="11"
+                  y="2.5"
+                  width="6.5"
+                  height="6.5"
+                  rx="1.3"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                />
+                <rect
+                  x="2.5"
+                  y="11"
+                  width="6.5"
+                  height="6.5"
+                  rx="1.3"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                />
+                <rect
+                  x="11"
+                  y="11"
+                  width="6.5"
+                  height="6.5"
+                  rx="1.3"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                /></svg></span
+            ><span class="nav-label">Dashboard</span></a
+          >
+          <a class="nav-item" href="EventOrganizerAllEvents.html"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" fill="none">
+                <rect
+                  x="2.5"
+                  y="3.5"
+                  width="15"
+                  height="13.5"
+                  rx="1.6"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                />
+                <path
+                  d="M2.5 7.5H17.5M6 2v3M14 2v3"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                /></svg></span
+            ><span class="nav-label">All Events</span></a
+          >
+          <a class="nav-item" href="EventOrganizerCalendar.html"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" fill="none">
+                <rect
+                  x="2.5"
+                  y="3.5"
+                  width="15"
+                  height="13.5"
+                  rx="1.6"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                />
+                <path
+                  d="M2.5 8H17.5"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                />
+                <circle cx="7" cy="11.5" r="1" fill="currentColor" />
+                <circle cx="10.2" cy="11.5" r="1" fill="currentColor" />
+                <circle
+                  cx="13.4"
+                  cy="11.5"
+                  r="1"
+                  fill="currentColor"
+                /></svg></span
+            ><span class="nav-label">Calendar</span></a
+          >
+          <a class="nav-item is-active" href="EventOrganizerCreateEvent.html"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" fill="none">
+                <rect
+                  x="3"
+                  y="3"
+                  width="14"
+                  height="14"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                />
+                <path
+                  d="M10 6v8M6 10h8"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                /></svg></span
+            ><span class="nav-label">Create Event</span></a
+          >
+          <a class="nav-item" href="EventOrganizerMyEvents.html"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M4 4.5h12v11H4z"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                />
+                <path
+                  d="M7 2.5v4M13 2.5v4M4 8h12M7 11h.1M10 11h.1M13 11h.1M7 14h.1M10 14h.1"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                /></svg></span
+            ><span class="nav-label">My Events</span></a
+          >
+          <a class="nav-item" href="EventOrganizerNotification.html"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 3.5a4.5 4.5 0 0 0-4.5 4.5v2.4c0 .5-.2 1-.5 1.4L4 13h12l-1-1.2c-.3-.4-.5-.9-.5-1.4V8A4.5 4.5 0 0 0 10 3.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M8.3 16a1.7 1.7 0 0 0 3.4 0"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                /></svg></span
+            ><span class="nav-label">Notifications</span
+            ><span class="nav-badge" id="navNotifBadge"></span
+          ></a>
+          <a class="nav-item" href="EventOrganizerProfile.html"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" fill="none">
+                <circle
+                  cx="10"
+                  cy="6.8"
+                  r="3"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                />
+                <path
+                  d="M4 17c0-3 2.7-5 6-5s6 2 6 5"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                /></svg></span
+            ><span class="nav-label">Profile</span></a
+          >
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="user-card">
+            <div class="avatar" id="userAvatar">EO</div>
+            <div class="user-meta">
+              <div class="user-name" id="userName">Event Organizer</div>
+              <div class="user-role" id="userRole">IBITS account</div>
+            </div>
+          </div>
+          <a class="nav-item logout" href="EventOrganizerLogin.html"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M8 17H4.8A1.8 1.8 0 0 1 3 15.2V4.8A1.8 1.8 0 0 1 4.8 3H8M13 13.5 17 10l-4-3.5M7.5 10H17"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                /></svg></span
+            ><span class="nav-label">Logout</span></a
+          >
+        </div>
+      </aside>
+
+      <main class="organizer-main">
+        <div id="createEventRoot" aria-live="polite"><h1 class="sr-only">Create Campus Event</h1></div>
+      </main>
+    </div>
+
+    <script src="OrganizerNotificationBadge.js"></script>
+    <script type="module" src="eventorganizationcreateevent.js"></script>
+  </body>
+</html>
