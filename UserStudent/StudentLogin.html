@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Sign In | RecoVibe - PUP Biñan Campus</title>
+    <meta
+      name="description"
+      content="Log in to the RecoVibe Student Portal to discover campus events, view calendar schedules, and track your participation."
+    />
+    <link
+      rel="canonical"
+      href="https://yourdomain.com/UserStudent/StudentLogin.html"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="StudentLogin.css" />
+  </head>
+  <body>
+    <div class="screen" id="studentLoginPage">
+      <div class="side" id="loginBrandPanel">
+        <img
+          id="loginBrandLogo"
+          class="mark"
+          src="Picture/PUPLogo-removebg-preview.png"
+          alt="Polytechnic University of the Philippines Bi&#241;an Campus Seal - RecoVibe"
+          width="80"
+          height="80"
+          decoding="async"
+          loading="lazy"
+        />
+        <div>
+          <h1 id="loginPageTitle">RecoVibe Student Portal</h1>
+          <p class="tagline" id="loginPageTagline">
+            University, Organization, and Seminar Events.
+          </p>
+        </div>
+      </div>
+
+      <div class="main" id="loginMain">
+        <div class="card" id="loginCard">
+          <div class="view active" id="view-login">
+            <a href="../FirstPage.html" class="back-link"
+              >‹ Back to portal selection</a
+            >
+            <h2 id="loginHeading">Sign in</h2>
+            <p class="sub" id="loginDescription">
+              Use your student ID and portal password.
+            </p>
+
+            <div class="banner" id="login-banner"></div>
+
+            <div class="field" id="field-id">
+              <label for="student-id">Student Number or Email</label>
+              <input
+                type="text"
+                id="student-id"
+                placeholder="Enter student number or email"
+                maxlength="254"
+                autocomplete="username"
+              />
+              <div class="error-msg">Enter your student ID.</div>
+            </div>
+
+            <div class="field password-field" id="field-pass">
+              <label for="student-pass">Password</label>
+              <input
+                type="password"
+                id="student-pass"
+                placeholder="••••••••"
+                autocomplete="current-password"
+              />
+              <button
+                type="button"
+                class="pass-toggle"
+                id="pass-toggle"
+                aria-label="Show password"
+                aria-pressed="false"
+              >
+                <svg
+                  id="eye-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </button>
+              <div class="error-msg">
+                Incorrect password. Try again or reset it.
+              </div>
+            </div>
+
+            <div class="row-between">
+              <label class="remember"
+                ><input type="checkbox" id="remember" /> Stay signed in</label
+              >
+              <a href="ForgetPassword.html" class="link-btn"
+                >Forgot password?</a
+              >
+            </div>
+
+            <button type="button" class="btn-primary" id="login-submit">
+              Sign in
+            </button>
+
+            <p class="foot-note">
+              New here?
+              <a href="StudentRegistration.html" class="link-btn"
+                >Create an account</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="StudentLogin.js"></script>
+  </body>
+</html>

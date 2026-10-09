@@ -1,0 +1,1434 @@
+/* ============================================================
+   Styles for register.html only.
+   Duplicated from the login page's palette/type system so this
+   page is fully self-contained (no shared stylesheet).
+   ============================================================ */
+
+:root {
+  --navy: #58111a;
+  --navy-deep: #58111a;
+  --cream: #fbf7ee;
+  --cream-dim: #e9e3d3;
+  --ink: #1b1f2a;
+  --ink-dim: #6b7280;
+  --gold: #e0a93b;
+  --gold-dim: #e7cd82;
+  --line: #e3dcc8;
+  --error: #b3453c;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--navy);
+}
+h1,
+h2 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 600;
+  margin: 0;
+}
+button {
+  font-family: inherit;
+}
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.screen {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 350px minmax(0, 1fr);
+}
+
+/* ---------- Left panel (now light/cream) ---------- */
+.side {
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(201, 162, 39, 0.14),
+      transparent 45%
+    ),
+    var(--cream);
+  color: var(--ink);
+  padding: 64px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 40px;
+  position: relative;
+}
+.side .mark {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  padding: 8px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+}
+.side h1 {
+  font-size: clamp(30px, 3.4vw, 42px);
+  line-height: 1.2;
+  max-width: 11ch;
+  margin-top: 0;
+}
+.side p.portal-subtitle {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 8px 0 0;
+}
+.side p.tagline {
+  color: var(--ink-dim);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 37ch;
+  margin: 18px 0 0;
+}
+
+/* ---------- Right panel (now dark/navy) ---------- */
+.main {
+  min-width: 0;
+  background: var(--navy-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.card {
+  width: 90%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 40px 50px;
+  box-sizing: border-box;
+}
+.card h2 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
+.card .sub {
+  color: var(--cream-dim);
+  font-size: 14px;
+  margin: 8px 0 30px;
+  line-height: 1.5;
+}
+
+.field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0;
+  color: #fff;
+}
+.field input,
+.field select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 1px solid rgba(27, 31, 42, 0.14);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14.5px;
+  color: #222;
+  font-family: inherit;
+}
+.field select {
+  min-height: 41px;
+  border-radius: 8px;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.field .native-filter-dropdown {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+.field .native-filter-dropdown:focus-within {
+  z-index: 1001;
+}
+.field .native-filter-dropdown .filter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  min-height: 41px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font:
+    500 14px/1.2 Inter,
+    sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+.field .native-filter-dropdown .filter-button::after {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  content: "";
+  transform: rotate(45deg) translateY(-2px);
+}
+.field.invalid .native-filter-dropdown .filter-button {
+  border-color: var(--error);
+}
+.field .native-filter-dropdown .filter-menu {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 5px);
+  left: 0;
+  width: max-content;
+  min-width: 100%;
+  max-width: min(300px, calc(100vw - 32px));
+  padding: 4px 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(36, 26, 23, 0.14);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px) scale(0.98);
+  transform-origin: top center;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.field .native-filter-dropdown .filter-menu.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+.field .native-filter-dropdown .filter-option {
+  display: block;
+  width: 100%;
+  padding: 9px 12px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font:
+    500 13px Inter,
+    sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+.field .native-filter-dropdown .filter-option:last-child {
+  border-bottom: 0;
+}
+.field .native-filter-dropdown .filter-option:hover,
+.field .native-filter-dropdown .filter-option:focus-visible {
+  outline: 0;
+  background: #f4f1ea;
+}
+.field .native-filter-dropdown .filter-option.active {
+  background: #eee;
+}
+.field .native-filter-dropdown .native-filter-select {
+  display: none !important;
+}
+.field .native-filter-dropdown .filter-menu {
+  max-height: 240px;
+  overflow-y: auto;
+}
+.field input:focus,
+.field select:focus {
+  border-color: var(--gold);
+}
+.field .error-msg {
+  display: none;
+  color: #ffb4ac;
+  font-size: 12.5px;
+  margin: 0;
+}
+.field.invalid input,
+.field.invalid select {
+  border-color: var(--error);
+}
+.field.invalid .error-msg {
+  display: block;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin: -6px 0 22px;
+}
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--cream-dim);
+}
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--gold-dim);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.link-btn:hover {
+  color: var(--gold);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--gold);
+  color: #2b2b2b;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.btn-primary:hover {
+  background: var(--gold-dim);
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(250, 247, 239, 0.3);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--cream);
+  font-size: 14.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  margin-top: 10px;
+}
+.btn-secondary:hover {
+  background: rgba(250, 247, 239, 0.08);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--cream-dim);
+  font-size: 13px;
+  padding: 0;
+  margin-bottom: 24px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.back-link:hover {
+  color: var(--cream);
+}
+
+.banner {
+  display: none;
+  background: rgba(250, 247, 239, 0.08);
+  border: 1px solid rgba(250, 247, 239, 0.2);
+  border-radius: 7px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--cream);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.banner strong {
+  color: var(--gold-dim);
+  font-family: "Source Serif 4", serif;
+  letter-spacing: 1px;
+}
+.banner.show {
+  display: block;
+}
+
+.code-inputs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.code-inputs input {
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 18px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-family: "Source Serif 4", serif;
+}
+.code-inputs input:focus {
+  border-color: var(--gold);
+}
+
+.view {
+  display: none;
+}
+.view.active {
+  display: block;
+}
+
+.success-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--navy-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.foot-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--cream-dim);
+  margin-top: 18px;
+}
+
+@media (max-width: 860px) {
+  .screen {
+    grid-template-columns: 1fr;
+  }
+  .side {
+    padding: 40px 28px;
+    min-height: 240px;
+    gap: 24px;
+  }
+  .side h1 {
+    font-size: 28px;
+  }
+  .main {
+    padding: 40px 24px 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+body {
+  animation: page-enter 0.32s ease both;
+}
+body.is-leaving {
+  animation: page-leave 0.2s ease forwards;
+  pointer-events: none;
+}
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes page-leave {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none !important;
+  }
+}
+
+/* Let all field groups participate directly in the form grid. */
+.name-grid,
+.registration-grid {
+  display: contents;
+}
+#view-register.active {
+  display: block;
+}
+#student-registration-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    "last first middle"
+    "email student contact"
+    "department year organization"
+    "pass confirm ."
+    "form-error form-error form-error"
+    "create create create";
+  gap: 12px 22px;
+}
+#field-reg-lastname {
+  grid-area: last;
+}
+#field-reg-firstname {
+  grid-area: first;
+}
+#field-reg-middlename {
+  grid-area: middle;
+}
+#field-reg-email {
+  grid-area: email;
+}
+#field-reg-student-id {
+  grid-area: student;
+}
+#field-reg-contact {
+  grid-area: contact;
+}
+#field-reg-department {
+  grid-area: department;
+}
+#field-reg-year {
+  grid-area: year;
+}
+#field-reg-organization {
+  grid-area: organization;
+}
+#field-reg-pass {
+  grid-area: pass;
+}
+#field-reg-confirm {
+  grid-area: confirm;
+}
+#create-account {
+  grid-area: create;
+  margin-top: 8px;
+}
+
+.label-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 6px;
+  width: 100%;
+}
+.label-row label[for="reg-middlename"] {
+  margin-bottom: 0;
+}
+
+.checkbox-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--cream-dim);
+  cursor: pointer;
+  white-space: normal;
+  line-height: 1.35;
+  max-width: 100%;
+  margin-top: 6px;
+}
+.field label.checkbox-inline {
+  display: flex;
+  align-items: center;
+  color: var(--cream-dim);
+  font-size: 12.5px;
+  font-weight: 400;
+}
+.checkbox-inline input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.field input:disabled {
+  background: var(--cream-dim);
+  color: var(--ink-dim);
+  cursor: not-allowed;
+  border-color: var(--line);
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+    padding: 32px 20px;
+  }
+  #student-registration-form {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  #student-registration-form {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "last"
+      "first"
+      "middle"
+      "email"
+      "student"
+      "contact"
+      "department"
+      "year"
+      "organization"
+      "pass"
+      "confirm"
+      "create";
+  }
+}
+
+/* ---------- Show/hide password toggle ---------- */
+.password-wrapper {
+  position: relative;
+}
+.password-wrapper input {
+  padding-right: 42px;
+}
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ink-dim);
+  cursor: pointer;
+  border-radius: 6px;
+}
+.toggle-password:hover {
+  color: var(--ink);
+  background: var(--cream-dim);
+}
+
+#student-registration-form {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  column-gap: 22px;
+  row-gap: 16px;
+}
+
+#student-registration-form .field {
+  align-self: start;
+  gap: 6px;
+}
+
+#student-registration-form .field input,
+#student-registration-form .field select,
+#student-registration-form .field .native-filter-dropdown .filter-button {
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+#student-registration-form .field input::placeholder {
+  font-size: 12px;
+  color: #777;
+  opacity: 1;
+}
+
+#student-registration-form .field select {
+  appearance: none;
+  padding: 0 36px 0 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#student-registration-form .field .native-filter-dropdown {
+  width: 100%;
+  min-width: 0;
+}
+
+#student-registration-form .field .native-filter-dropdown .filter-button {
+  min-width: 0 !important;
+  justify-content: space-between;
+  padding: 0 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 8px;
+}
+
+#student-registration-form .field .native-filter-dropdown .filter-button::after {
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  margin-left: 8px;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+#student-registration-form .field .native-filter-dropdown .filter-menu {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+#student-registration-form .field .native-filter-dropdown .filter-button[aria-invalid="true"] {
+  border: 2px solid #ff8a8a;
+}
+
+#student-registration-form .field input {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#student-registration-form .field .password-wrapper {
+  width: 100%;
+  min-width: 0;
+}
+
+#student-registration-form .field .password-wrapper input {
+  height: 40px;
+  padding-right: 44px;
+}
+
+#student-registration-form .toggle-password {
+  top: 20px;
+  right: 5px;
+  transform: translateY(-50%);
+}
+
+#student-registration-form .field .error-msg {
+  display: block;
+  width: 100%;
+  height: 16px;
+  min-height: 16px;
+  margin: 0;
+  overflow: hidden;
+  color: #ffb4b4;
+  font-size: 12px;
+  line-height: 16px;
+  visibility: hidden;
+}
+
+#student-registration-form .field.invalid .error-msg {
+  visibility: visible;
+}
+
+#student-registration-form .field.invalid input,
+#student-registration-form .field.invalid select,
+#student-registration-form .field.invalid .password-wrapper input {
+  border: 2px solid #ff8a8a;
+}
+
+#student-registration-form .field input:disabled {
+  opacity: 0.55;
+}
+
+#student-registration-form .checkbox-inline {
+  min-height: 24px;
+  margin-top: 0;
+  color: var(--cream-dim);
+  font-size: 12px;
+}
+
+#student-registration-form .checkbox-inline input[type="checkbox"] {
+  width: 17px;
+  height: 17px !important;
+  min-height: 17px;
+  flex: 0 0 17px;
+}
+
+#student-registration-form #field-reg-pass .error-msg {
+  height: 84px;
+  min-height: 84px;
+  font-size: 11px;
+  line-height: 14px;
+  overflow-wrap: anywhere;
+}
+
+.password-checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 16px;
+  column-gap: 8px;
+  align-content: start;
+  height: 48px;
+  min-height: 48px;
+  margin: 0;
+  padding: 0;
+  color: var(--cream-dim);
+  font-size: 10px;
+  line-height: 16px;
+  list-style: none;
+}
+
+.password-checklist li {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.password-checklist li::before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin: 0 5px 0 1px;
+  border: 1px solid #ffb4b4;
+  border-radius: 50%;
+  vertical-align: -1px;
+}
+
+.password-checklist li.met {
+  color: var(--gold-dim);
+}
+
+.password-checklist li.met::before {
+  width: 5px;
+  height: 8px;
+  margin: 0 8px 0 3px;
+  border: solid var(--gold);
+  border-width: 0 1.5px 1.5px 0;
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+#student-registration-form .password-hint-live {
+  height: 16px;
+  min-height: 16px;
+  color: var(--cream-dim);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+#student-registration-form .form-error {
+  grid-column: 1 / -1;
+  min-height: 16px;
+  color: #ffb4b4;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+#student-registration-form .form-error:empty {
+  visibility: hidden;
+}
+
+@media (min-width: 1000px) and (max-width: 1299px) {
+  #student-registration-form .field .error-msg {
+    height: 32px;
+    min-height: 32px;
+  }
+}
+
+#student-registration-form #create-account {
+  grid-area: create;
+  margin-top: 0;
+}
+
+#student-registration-form .form-error {
+  grid-area: form-error;
+}
+
+@media (min-width: 600px) and (max-width: 999px) {
+  #student-registration-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "last first"
+      "middle middle"
+      "email student"
+      "contact department"
+      "year organization"
+      "pass confirm"
+      "form-error form-error"
+      "create create";
+  }
+}
+
+@media (max-width: 599px) {
+  .main {
+    padding: 32px 16px 48px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 820px;
+    padding: 32px 20px;
+  }
+
+  #student-registration-form {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "last"
+      "first"
+      "middle"
+      "email"
+      "student"
+      "contact"
+      "department"
+      "year"
+      "organization"
+      "pass"
+      "confirm"
+      "form-error"
+      "create";
+    column-gap: 0;
+    row-gap: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  #student-registration-form {
+    row-gap: 12px;
+  }
+}
+
+.main {
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.card .sub {
+  margin-bottom: 24px;
+}
+
+#student-registration-form {
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    "last first middle"
+    "email student contact"
+    "department year organization"
+    "pass confirm ."
+    "checklist checklist checklist"
+    "password-error password-error password-error"
+    "confirm-error confirm-error confirm-error"
+    "form-error form-error form-error"
+    "create create create";
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+#student-registration-form .field {
+  display: grid;
+  grid-template-rows: auto 40px auto 18px;
+  align-content: start;
+  align-items: center;
+  gap: 6px;
+}
+
+#student-registration-form .field:not(#field-reg-middlename)::before {
+  content: "";
+  grid-row: 3;
+  min-height: 18px;
+}
+
+#student-registration-form #field-reg-pass,
+#student-registration-form #field-reg-confirm {
+  grid-template-rows: auto 40px;
+}
+
+#student-registration-form .field#field-reg-pass::before,
+#student-registration-form .field#field-reg-confirm::before {
+  content: none;
+}
+
+#student-registration-form .field > label:not(.checkbox-inline) {
+  grid-row: 1;
+}
+
+#student-registration-form .field > input,
+#student-registration-form .field > select,
+#student-registration-form .field > .password-wrapper,
+#student-registration-form .field > .native-filter-dropdown {
+  grid-row: 2;
+}
+
+#student-registration-form .field > .checkbox-inline {
+  grid-row: 3;
+  min-height: 18px;
+  height: auto;
+  white-space: normal;
+}
+
+#student-registration-form .field > .error-msg {
+  grid-row: 4;
+  height: 18px;
+  min-height: 18px;
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+#student-registration-form .field input,
+#student-registration-form .field select,
+#student-registration-form .field .native-filter-dropdown .filter-button {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 12px;
+  color: #222;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+#student-registration-form .field input::placeholder {
+  color: #8a8a8a;
+  font-size: 12px;
+  opacity: 1;
+}
+
+#student-registration-form .field .native-filter-dropdown .filter-button {
+  justify-content: space-between;
+  gap: 8px;
+  text-align: left;
+}
+
+#student-registration-form .field .native-filter-dropdown:has(select:invalid)
+  .filter-button {
+  color: #8a8a8a;
+}
+
+#student-registration-form .field .native-filter-dropdown:not(:has(select:invalid))
+  .filter-button {
+  color: #222;
+}
+
+#student-registration-form .field .native-filter-dropdown .filter-button::after {
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  margin-left: 8px;
+  border: solid currentColor;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+#student-registration-form .field .password-wrapper input {
+  padding-right: 40px;
+}
+
+#student-registration-form .toggle-password {
+  right: 4px;
+  width: 30px;
+  height: 30px;
+}
+
+#student-registration-form .password-checklist {
+  grid-area: checklist;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  gap: 6px 8px;
+  align-items: start;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  color: var(--cream-dim);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+#student-registration-form .password-checklist li {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+  overflow-wrap: anywhere;
+  color: var(--cream-dim);
+}
+
+#student-registration-form .password-checklist li::before {
+  content: "";
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  border: 1px solid var(--cream-dim);
+  border-radius: 50%;
+  transform: none;
+}
+
+#student-registration-form .password-checklist li.met {
+  color: #9be7a8;
+}
+
+#student-registration-form .password-checklist li.met::before {
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  border: 2px solid #9be7a8;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, transparent 42%, #9be7a8 42% 52%, transparent 52%)
+      2px 5px / 4px 5px no-repeat,
+    linear-gradient(45deg, transparent 42%, #9be7a8 42% 52%, transparent 52%)
+      5px 4px / 6px 6px no-repeat;
+  transform: none;
+}
+
+#student-registration-form #reg-pass-error {
+  grid-area: password-error;
+  grid-column: 1 / -1;
+  align-self: start;
+  width: 100%;
+  height: auto;
+  min-height: 18px;
+  overflow: visible;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+#student-registration-form #reg-confirm-error {
+  grid-area: confirm-error;
+  grid-column: 1 / -1;
+  align-self: start;
+  width: 100%;
+  height: auto;
+  min-height: 18px;
+  overflow: visible;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+#student-registration-form #reg-pass-error.visible {
+  height: auto;
+}
+
+#student-registration-form .error-msg.visible {
+  visibility: visible;
+}
+
+#student-registration-form #create-account {
+  grid-area: create;
+  width: 100%;
+  margin-top: 0;
+}
+
+.foot-note {
+  margin-top: 12px;
+  text-align: center;
+}
+
+@media (min-width: 900px) and (max-width: 1099px) {
+  .screen {
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+
+  .main {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .card {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+}
+
+@media (min-width: 560px) and (max-width: 899px) {
+  #student-registration-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "last first"
+      "middle middle"
+      "email student"
+      "contact department"
+      "year organization"
+      "pass confirm"
+      "checklist checklist"
+      "password-error password-error"
+      "confirm-error confirm-error"
+      "form-error form-error"
+      "create create";
+    column-gap: 16px;
+    row-gap: 16px;
+  }
+
+  #student-registration-form .password-checklist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 559px) {
+  #student-registration-form {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "last"
+      "first"
+      "middle"
+      "email"
+      "student"
+      "contact"
+      "department"
+      "year"
+      "organization"
+      "pass"
+      "confirm"
+      "checklist"
+      "password-error"
+      "confirm-error"
+      "form-error"
+      "create";
+    column-gap: 0;
+    row-gap: 16px;
+  }
+
+  #student-registration-form .password-checklist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .screen {
+    grid-template-columns: minmax(min(420px, 100%), 420px) minmax(0, 1fr);
+  }
+
+  .side {
+    --cream: #faf7ef;
+    --gold: #c9a227;
+    flex-shrink: 0;
+    min-width: 0;
+    padding: 77px 67px;
+    gap: 40px;
+  }
+
+  .main {
+    min-width: 0;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1099px) {
+  .screen {
+    grid-template-columns: 1.1fr minmax(0, 1fr);
+  }
+}
+
+.side .mark {
+  display: flex;
+  flex: 0 0 80px;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border-color: #c9a227;
+}
+
+.side h1 {
+  max-width: 11ch;
+  margin-top: 0;
+  font-size: clamp(30px, 3.4vw, 42px);
+  line-height: 1.2;
+}
+
+.side p.tagline {
+  max-width: 37ch;
+  margin: 18px 0 0;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .screen {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .side {
+    min-width: 0;
+    min-height: 240px;
+    padding: 40px 28px;
+    gap: 24px;
+  }
+
+  .side h1 {
+    font-size: 28px;
+  }
+
+  .main {
+    padding: 40px 24px 64px;
+  }
+}
+
+@media (min-width: 861px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    animation: none;
+  }
+
+  .screen {
+    height: 100vh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .side,
+  .main {
+    min-height: 0;
+  }
+
+  .main {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 861px) and (max-height: 950px) {
+  .main {
+    padding: 6px 10px;
+  }
+
+  .card {
+    max-width: 720px;
+    padding: 10px 12px;
+  }
+
+  .back-link {
+    margin-bottom: 8px;
+  }
+
+  .card h2 {
+    font-size: 24px;
+  }
+
+  .card .sub {
+    margin: 4px 0 8px;
+  }
+
+  #student-registration-form {
+    row-gap: 6px;
+  }
+
+  #student-registration-form .field {
+    grid-template-rows: auto 34px auto 12px;
+    gap: 3px;
+  }
+
+  #student-registration-form .field:not(#field-reg-middlename)::before {
+    min-height: 12px;
+  }
+
+  #student-registration-form #field-reg-pass,
+  #student-registration-form #field-reg-confirm {
+    grid-template-rows: auto 34px;
+  }
+
+  #student-registration-form .field input,
+  #student-registration-form .field select,
+  #student-registration-form .field .native-filter-dropdown .filter-button,
+  #student-registration-form .field .password-wrapper input {
+    height: 34px;
+    min-height: 34px;
+  }
+
+  #student-registration-form .field > .checkbox-inline {
+    min-height: 12px;
+  }
+
+  #student-registration-form .field > .error-msg {
+    height: auto;
+    min-height: 12px;
+    overflow: visible;
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  #student-registration-form .password-checklist {
+    gap: 4px;
+    font-size: 10px;
+  }
+
+  #student-registration-form .password-checklist li {
+    gap: 3px;
+  }
+
+  #student-registration-form .password-checklist li::before,
+  #student-registration-form .password-checklist li.met::before {
+    flex-basis: 11px;
+    width: 11px;
+    height: 11px;
+  }
+
+  #student-registration-form .password-checklist li.met::before {
+    background:
+      linear-gradient(135deg, transparent 42%, #9be7a8 42% 52%, transparent 52%)
+        1px 4px / 4px 5px no-repeat,
+      linear-gradient(45deg, transparent 42%, #9be7a8 42% 52%, transparent 52%)
+        4px 3px / 5px 5px no-repeat;
+  }
+
+  #student-registration-form #reg-pass-error,
+  #student-registration-form #reg-confirm-error {
+    min-height: 12px;
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  #student-registration-form #create-account {
+    min-height: 36px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .foot-note {
+    margin-top: 4px;
+  }
+}
+
+@media (min-width: 861px) and (max-height: 800px) {
+  .side {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  #student-registration-form {
+    row-gap: 4px;
+  }
+
+  #student-registration-form .password-checklist {
+    font-size: 9px;
+  }
+}

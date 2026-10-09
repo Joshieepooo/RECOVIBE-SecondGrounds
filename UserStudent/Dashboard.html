@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard | RecoVibe - PUP Biñan Campus</title>
+    <meta name="description" content="Personalized student dashboard featuring recommended campus events, organization updates, and upcoming schedules." />
+    <link rel="canonical" href="https://yourdomain.com/UserStudent/Dashboard.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Dashboard.css" />
+  </head>
+  <body>
+    <div class="app" id="dashboardPage">
+      <!-- ============ SIDEBAR ============ -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <div class="brand">
+            <div class="brand-mark">RV</div>
+            <div class="brand-text">
+              <div class="brand-name">RecoVibe</div>
+              <div class="brand-sub">PUP Biñan Campus</div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="nav" id="eventsNavigation" aria-label="Primary">
+          <a class="nav-item is-active" href="Dashboard.html" title="Dashboard"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <rect x="2.5" y="2.5" width="6" height="6" rx="1" />
+                <rect x="11.5" y="2.5" width="6" height="6" rx="1" />
+                <rect x="2.5" y="11.5" width="6" height="6" rx="1" />
+                <rect
+                  x="11.5"
+                  y="11.5"
+                  width="6"
+                  height="6"
+                  rx="1"
+                /></svg></span
+            ><span class="nav-label">Dashboard</span></a
+          >
+          <a class="nav-item" href="Events.html" title="Events"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <rect x="2.5" y="4" width="15" height="13" rx="1.5" />
+                <path d="M2.5 8h15M6 2.5v3M14 2.5v3" /></svg></span
+            ><span class="nav-label">Events</span></a
+          >
+          <a class="nav-item" href="Calendar.html" title="Calendar"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <rect x="2.5" y="4" width="15" height="13" rx="1.5" />
+                <path
+                  d="M2.5 8h15M6 2.5v3M14 2.5v3M6.5 11h.1M10 11h.1M13.5 11h.1"
+                /></svg></span
+            ><span class="nav-label">Calendar</span></a
+          >
+          <a
+            class="nav-item"
+            href="Student-Participation.html"
+            title="My Participation"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="7" cy="6" r="2.5" />
+                <path
+                  d="M2.8 16a4.2 4.2 0 0 1 8.4 0M12.5 9a2.3 2.3 0 1 0 0-4.5M13 11.5a4 4 0 0 1 4.2 4.5"
+                /></svg></span
+            ><span class="nav-label">My Participation</span></a
+          >
+          <a class="nav-item" href="Notification.html" title="Notifications"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 14h12l-1.2-1.7V8a4.8 4.8 0 0 0-9.6 0v4.3L4 14Z" />
+                <path d="M8 16a2 2 0 0 0 4 0" /></svg></span
+            ><span class="nav-label">Notifications</span
+            ><span class="nav-badge" id="navNotifBadge"></span
+          ></a>
+          <a
+            class="nav-item"
+            href="StudentProfile.html"
+            title="Profile"
+            aria-current="page"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="10" cy="6.5" r="3" />
+                <path d="M4 17a6 6 0 0 1 12 0" /></svg></span
+            ><span class="nav-label">Profile</span></a
+          >
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="user-card">
+            <div class="avatar" id="userAvatar"></div>
+            <div class="user-meta">
+              <div class="user-name" id="userName"></div>
+              <div class="user-role" id="userRole"></div>
+            </div>
+          </div>
+          <a
+            class="nav-item logout"
+            href="StudentLogin.html"
+            data-label="Logout"
+            title="Logout"
+          >
+            <span class="nav-icon">
+              <svg viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M8 17H4.8A1.8 1.8 0 0 1 3 15.2V4.8A1.8 1.8 0 0 1 4.8 3H8"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M13 13.5 17 10l-4-3.5"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M7.5 10H17"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            <span class="nav-label">Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- ============ MAIN ============ -->
+      <main class="main" id="dashboardMain">
+        <header class="topbar" id="dashboardHeader">
+          <div>
+            <h1 class="greeting" id="dashboardGreeting">
+              Good Morning, <span id="greetingName">Joshua Lopez</span>
+            </h1>
+          </div>
+          <div class="today">
+            <div class="today-label">Today</div>
+            <div class="today-date" id="todayDate"></div>
+          </div>
+        </header>
+
+        <section
+          class="recommendations-overview"
+          id="recommendationsSection"
+          aria-labelledby="recommendationsHeading"
+        >
+          <div class="panel-head">
+            <h2 id="recommendationsHeading">Recommended For You</h2>
+            <span class="hint-label">Based On Your Preferences</span>
+          </div>
+          <div class="rec-grid" id="recGrid"><!-- injected by JS --></div>
+        </section>
+
+        <section
+          class="search-row"
+          id="dashboardSearchSection"
+          aria-label="Event search"
+        >
+          <div class="search-box">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 20 20"
+              fill="none"
+              class="search-icon"
+            >
+              <circle
+                cx="8.8"
+                cy="8.8"
+                r="5.6"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M13 13l4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="PUP Connect!"
+              aria-label="Search events"
+            />
+          </div>
+        </section>
+
+        <section class="content-grid" id="dashboardContent">
+          <!-- LEFT COLUMN -->
+          <div class="content-left" id="dashboardEventsColumn">
+            <div class="panel-head">
+              <h2>Upcoming Events</h2>
+              <a href="Events.html" class="link-see-all" data-view="events"
+                >See All Events</a
+              >
+            </div>
+
+            <div class="event-list" id="eventList"><!-- injected by JS --></div>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="content-right" id="dashboardWidgetsColumn">
+            <div class="card calendar-card" id="dashboardCalendarCard">
+              <div class="panel-head panel-head--tight">
+                <h2>Calendar Preview</h2>
+                <a href="Calendar.html" class="link-see-all" data-view="calendar"
+                  >Full Calendar</a
+                >
+              </div>
+              <div class="cal-nav">
+                <button
+                  class="cal-arrow"
+                  id="calPrev"
+                  aria-label="Previous month"
+                >
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M10 3L5 8l5 5"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <div class="cal-month" id="calMonthLabel">September 2026</div>
+                <button class="cal-arrow" id="calNext" aria-label="Next month">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M6 3l5 5-5 5"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="cal-grid cal-grid--dow">
+                <span>S</span><span>M</span><span>T</span><span>W</span
+                ><span>Th</span><span>F</span><span>S</span>
+              </div>
+              <div class="cal-grid" id="calDays"><!-- injected by JS --></div>
+              <div class="cal-day-events" id="calDayEvents" aria-live="polite"></div>
+            </div>
+
+            <div class="card notif-card" id="dashboardNotificationsCard">
+              <div class="panel-head panel-head--tight">
+                <h2>Notifications</h2>
+                <a
+                  href="Notification.html"
+                  class="link-see-all"
+                  data-view="notifications"
+                  >See All</a
+                >
+              </div>
+              <ul class="notif-list" id="notifList">
+                <!-- injected by JS -->
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Event details modal -->
+    <div class="dashboard-modal-overlay" id="modalOverlay" aria-hidden="true">
+      <section
+        class="dashboard-event-dialog"
+        id="detailsDialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        tabindex="-1"
+      >
+        <button
+          type="button"
+          class="dashboard-modal-close"
+          id="modalClose"
+          aria-label="Close event details"
+        >
+          &times;
+        </button>
+        <div class="dashboard-event-content" id="modalContent"></div>
+        <footer class="dashboard-event-footer">
+          <p
+            class="dashboard-action-notice"
+            id="modalActionNotice"
+            role="status"
+          ></p>
+          <button
+            type="button"
+            class="dashboard-participate-button"
+            id="modalAction"
+          ></button>
+        </footer>
+      </section>
+    </div>
+
+    <div
+      class="dashboard-modal-overlay dashboard-confirm-overlay"
+      id="confirmOverlay"
+      aria-hidden="true"
+    >
+      <section
+        class="dashboard-confirm-dialog"
+        id="confirmDialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirmTitle"
+        tabindex="-1"
+      >
+        <h2 id="confirmTitle">Join Event?</h2>
+        <p id="confirmMessage"></p>
+        <p class="dashboard-confirm-error" id="confirmError" role="alert"></p>
+        <div class="dashboard-confirm-actions">
+          <button
+            type="button"
+            class="dashboard-confirm-primary"
+            id="confirmPrimary"
+          >
+            Participate
+          </button>
+          <button
+            type="button"
+            class="dashboard-confirm-cancel"
+            id="confirmCancel"
+          >
+            Cancel
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="events-data.js"></script>
+    <script src="notification-count.js"></script>
+    <script>
+      (() => {
+        let user = {};
+        try {
+          user = JSON.parse(localStorage.getItem("recovibeCurrentUser") || "null") || {};
+        } catch {
+          user = {};
+        }
+        const firstName = String(user.firstName || "").trim();
+        const fullName = String(user.name || user.fullName || "").trim();
+        const nameFromProfile = [firstName, user.middleName, user.lastName]
+          .map((part) => String(part || "").trim())
+          .filter(Boolean)
+          .join(" ");
+        const displayName = fullName || nameFromProfile || "Student";
+        const first = firstName || fullName.split(/\s+/).filter(Boolean)[0] || "";
+        const fallback = [
+          user.username,
+          user.studentNumber,
+          user.studentId,
+          user.email,
+        ]
+          .map((value) => String(value || "").trim())
+          .find(Boolean) || "";
+        const avatar = Array.from(first || fallback)[0]?.toLocaleUpperCase() || "S";
+        const organization = String(user.organization || "").trim();
+        const role =
+          organization && organization.toLowerCase() !== "none"
+            ? organization
+            : "Student";
+        document.querySelectorAll(".user-name").forEach((item) => item.textContent = displayName);
+        document.querySelectorAll(".user-role").forEach((item) => item.textContent = role);
+        document.querySelectorAll(".avatar").forEach((item) => item.textContent = avatar);
+        document.querySelectorAll("#userFirstName").forEach((item) => item.textContent = first);
+        const greeting = document.getElementById("dashboardGreeting");
+        if (greeting) {
+          const hour = new Date().getHours();
+          const salutation = hour < 12 ? "Good Morning" : hour < 18 ? "Good Noon" : "Good Evening";
+          greeting.textContent = `${salutation}, ${displayName}`;
+        }
+      })();
+    </script>
+    <script src="Dashboard.js"></script>
+  </body>
+</html>

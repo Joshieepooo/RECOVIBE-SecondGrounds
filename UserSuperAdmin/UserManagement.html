@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en" data-auth-guard="pending">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#72141c" />
+    <title>User Role Management | RecoVibe Super Admin Portal</title>
+    <meta
+      name="description"
+      content="Manage user accounts, assign roles (Student, Teacher, Event Organizer, Admin), and enforce RBAC policies."
+    />
+    <link
+      rel="canonical"
+      href="https://yourdomain.com/UserSuperAdmin/UserManagement.html"
+    />
+    <link rel="stylesheet" href="superadmin.css" />
+    <link rel="stylesheet" href="usermanagement.css" />
+  </head>
+  <body>
+    <div class="superadmin-app">
+      <aside class="sidebar" aria-label="Super admin sidebar">
+        <a
+          class="brand"
+          href="SuperAdminDashboard.html"
+          aria-label="RecoVibe Super Admin home"
+        >
+          <span class="brand-mark" aria-hidden="true">RV</span>
+          <span class="brand-copy"
+            ><strong>RECOVIBE</strong><small>PUP Biñan Campus</small></span
+          >
+        </a>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="SuperAdminDashboard.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
+            </svg>
+            <span>Dashboard</span>
+          </a>
+          <a class="nav-link" href="SuperAdminAuditLogs.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 4h8M9 3h6v3H9zM7 5H5v16h14V5h-2M8 11h8M8 15h8" />
+            </svg>
+            <span>Audit Logs</span>
+          </a>
+          <a
+            class="nav-link is-active"
+            href="UserManagement.html"
+            aria-current="page"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="9" cy="8" r="3" />
+              <path
+                d="M3.5 20v-1.5a5.5 5.5 0 0 1 11 0V20zM16 5.5a3 3 0 0 1 0 5.8M17 14a5 5 0 0 1 3.5 4.8V20h-4"
+              />
+            </svg>
+            <span>User Management</span>
+          </a>
+          <a class="nav-link" href="SuperAdminCalendar.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="17" rx="2" />
+              <path d="M8 2v4M16 2v4M3 9h18M8 13h3M8 17h3M15 13h2M15 17h2" />
+            </svg>
+            <span>Calendar</span>
+          </a>
+          <a class="nav-link" href="SuperAdminSystemSettings.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="m19.4 15 .1.1 1.2 1-1.4 2.4-1.5-.6a8 8 0 0 1-1.5.9l-.3 1.6h-2.8l-.3-1.6a8 8 0 0 1-1.5-.9l-1.5.6-1.4-2.4 1.2-1a7 7 0 0 1 0-1.8l-1.2-1 1.4-2.4 1.5.6a8 8 0 0 1 1.5-.9l.3-1.6h2.8l.3 1.6a8 8 0 0 1 1.5.9l1.5-.6 1.4 2.4-1.2 1a7 7 0 0 1-.1 1.7Z"
+                transform="translate(-1 -1)"
+              />
+            </svg>
+            <span>System Settings</span>
+          </a>
+          <a class="nav-link" href="SuperAdminNotifications.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+              />
+            </svg>
+            <span>Notifications</span>
+          </a>
+          <a class="nav-link" href="SuperAdminProfile.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.5" />
+              <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+            </svg>
+            <span>Profile</span>
+          </a>
+        </nav>
+        <footer class="sidebar-footer">
+          <div class="account-summary">
+            <span class="account-badge" aria-hidden="true">SA1</span>
+            <span class="account-copy"
+              ><strong id="superadmin-name">JOSHUA ALEN LOPEZ</strong
+              ><small id="superadmin-role">Super Admin 1</small></span
+            >
+          </div>
+          <a class="logout-link" href="SuperAdminLogin.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M10 17l5-5-5-5M15 12H3M13 4h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"
+              />
+            </svg>
+            <span>Logout</span>
+          </a>
+        </footer>
+      </aside>
+
+      <main class="main-content user-management-main" id="main-content">
+        <header class="user-management-header">
+          <h1>User table</h1>
+          <button
+            class="create-user-button"
+            id="create-user-button"
+            type="button"
+          >
+            Create New User
+          </button>
+        </header>
+        <section class="user-table-card" aria-labelledby="user-table-heading">
+          <h2 class="visually-hidden" id="user-table-heading">User accounts</h2>
+          <div class="user-table-wrap">
+            <table class="user-table" id="user-management-table">
+              <caption class="visually-hidden">
+                RecoVibe user accounts, roles, and statuses
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">User</th>
+                  <th scope="col">Account No.</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="user-table-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <p
+      class="user-management-status"
+      id="user-management-status"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></p>
+    <dialog
+      class="user-dialog account-type-dialog"
+      id="account-type-dialog"
+      aria-labelledby="account-type-title"
+    >
+      <div class="account-type-content">
+        <button
+          class="dialog-dismiss"
+          type="button"
+          data-close-dialog
+          aria-label="Close account type selector"
+        >
+          ×
+        </button>
+        <h2 id="account-type-title">Select Account Type</h2>
+        <div class="account-type-grid" role="group" aria-label="Account type">
+          <button
+            class="account-type-button"
+            type="button"
+            data-select-role="Student"
+          >
+            Student
+          </button>
+          <button
+            class="account-type-button"
+            type="button"
+            data-select-role="Teacher"
+          >
+            Teacher
+          </button>
+          <button
+            class="account-type-button"
+            type="button"
+            data-select-role="Event Organizer"
+          >
+            Event Organizer
+          </button>
+          <button
+            class="account-type-button"
+            type="button"
+            data-select-role="Admin"
+          >
+            Admin
+          </button>
+          <button
+            class="account-type-button super-admin-role"
+            type="button"
+            data-select-role="Super Admin"
+          >
+            Super Admin
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog
+      class="user-dialog create-user-dialog"
+      id="create-user-dialog"
+      aria-labelledby="create-user-title"
+    >
+      <form
+        class="user-dialog-content user-form"
+        id="create-user-form"
+        novalidate
+      >
+        <div class="user-dialog-heading">
+          <h2 id="create-user-title">Create New User</h2>
+          <button
+            class="dialog-dismiss"
+            type="button"
+            data-return-to-account-types
+            aria-label="Close create user form"
+          >
+            ×
+          </button>
+        </div>
+        <div class="user-form-fields" id="create-user-fields"></div>
+        <p
+          class="user-form-error"
+          id="create-user-error"
+          role="alert"
+          hidden
+        ></p>
+        <div class="user-dialog-actions">
+          <button
+            class="user-modal-button secondary"
+            type="button"
+            data-return-to-account-types
+          >
+            Cancel
+          </button>
+          <button class="user-modal-button primary" type="submit">
+            Create User
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog
+      class="user-dialog details-dialog"
+      id="user-details-modal-backdrop"
+      aria-labelledby="user-details-name"
+    >
+      <div class="user-dialog-content details-content">
+        <button
+          class="dialog-dismiss"
+          type="button"
+          data-close-dialog
+          aria-label="Close user details"
+        >
+          ×
+        </button>
+        <h2 id="user-details-name"></h2>
+        <p class="user-detail-subtitle">
+          <span id="user-details-role"></span><span aria-hidden="true">|</span
+          ><span id="user-details-status"></span>
+        </p>
+        <section
+          class="user-account-information"
+          aria-labelledby="user-account-heading"
+        >
+          <h3 id="user-account-heading">Account Information:</h3>
+          <dl>
+            <div>
+              <dt>Full Name:</dt>
+              <dd id="user-detail-full-name"></dd>
+            </div>
+            <div>
+              <dt>Account / Student Number:</dt>
+              <dd id="user-detail-account-number"></dd>
+            </div>
+            <div>
+              <dt>Email:</dt>
+              <dd id="user-detail-email"></dd>
+            </div>
+            <div>
+              <dt>Contact Number:</dt>
+              <dd id="user-detail-contact"></dd>
+            </div>
+            <div>
+              <dt>Department / Program:</dt>
+              <dd id="user-detail-department"></dd>
+            </div>
+            <div>
+              <dt>Year &amp; Section:</dt>
+              <dd id="user-detail-year-section"></dd>
+            </div>
+            <div>
+              <dt>Organization / Department:</dt>
+              <dd id="user-detail-organization"></dd>
+            </div>
+            <div>
+              <dt>Role:</dt>
+              <dd id="user-detail-role"></dd>
+            </div>
+          </dl>
+        </section>
+        <div class="user-details-actions">
+          <button
+            class="user-modal-button danger"
+            id="delete-user-button"
+            type="button"
+          >
+            Delete Account
+          </button>
+          <button
+            class="user-modal-button primary"
+            id="toggle-user-status-button"
+            type="button"
+          >
+            Suspend Account
+          </button>
+          <a
+            class="user-modal-button secondary"
+            id="view-user-activity"
+            href="SuperAdminAuditLogs.html"
+            >View Activity</a
+          >
+          <button
+            class="user-modal-button secondary"
+            type="button"
+            data-close-dialog
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </dialog>
+    <script type="module" src="superAdminGuard.js"></script>
+    <script type="module" src="UserManagement.js"></script>
+  </body>
+</html>

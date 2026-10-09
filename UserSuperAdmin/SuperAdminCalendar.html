@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en" data-auth-guard="pending">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#72141c" />
+    <title>Calendar | RecoVibe Super Admin Portal</title>
+    <meta
+      name="description"
+      content="Campus event calendar for the RECOVIBE Super Admin portal."
+    />
+    <link rel="stylesheet" href="superadmin.css" />
+    <link rel="stylesheet" href="superAdminCalendar.css" />
+  </head>
+  <body>
+    <div class="superadmin-app">
+      <aside class="sidebar" aria-label="Super admin sidebar">
+        <a
+          class="brand"
+          href="SuperAdminDashboard.html"
+          aria-label="RecoVibe Super Admin home"
+        >
+          <span class="brand-mark" aria-hidden="true">RV</span>
+          <span class="brand-copy"
+            ><strong>RECOVIBE</strong><small>PUP Biñan Campus</small></span
+          >
+        </a>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="SuperAdminDashboard.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
+            </svg>
+            <span>Dashboard</span>
+          </a>
+          <a class="nav-link" href="SuperAdminAuditLogs.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 4h8M9 3h6v3H9zM7 5H5v16h14V5h-2M8 11h8M8 15h8" />
+            </svg>
+            <span>Audit Logs</span>
+          </a>
+          <a class="nav-link" href="UserManagement.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="9" cy="8" r="3" />
+              <path
+                d="M3.5 20v-1.5a5.5 5.5 0 0 1 11 0V20zM16 5.5a3 3 0 0 1 0 5.8M17 14a5 5 0 0 1 3.5 4.8V20h-4"
+              />
+            </svg>
+            <span>User Management</span>
+          </a>
+          <a
+            class="nav-link is-active"
+            href="SuperAdminCalendar.html"
+            aria-current="page"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="17" rx="2" />
+              <path d="M8 2v4M16 2v4M3 9h18M8 13h3M8 17h3M15 13h2M15 17h2" />
+            </svg>
+            <span>Calendar</span>
+          </a>
+          <a class="nav-link" href="SuperAdminSystemSettings.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="m19.4 15 .1.1 1.2 1-1.4 2.4-1.5-.6a8 8 0 0 1-1.5.9l-.3 1.6h-2.8l-.3-1.6a8 8 0 0 1-1.5-.9l-1.5.6-1.4-2.4 1.2-1a7 7 0 0 1 0-1.8l-1.2-1 1.4-2.4 1.5.6a8 8 0 0 1 1.5-.9l.3-1.6h2.8l.3 1.6a8 8 0 0 1 1.5.9l1.5-.6 1.4 2.4-1.2 1a7 7 0 0 1-.1 1.7Z"
+                transform="translate(-1 -1)"
+              />
+            </svg>
+            <span>System Settings</span>
+          </a>
+          <a class="nav-link" href="SuperAdminNotifications.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+              />
+            </svg>
+            <span>Notifications</span>
+          </a>
+          <a class="nav-link" href="SuperAdminProfile.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.5" />
+              <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+            </svg>
+            <span>Profile</span>
+          </a>
+        </nav>
+        <footer class="sidebar-footer">
+          <div class="account-summary">
+            <span class="account-badge" id="calendar-avatar" aria-hidden="true"
+              >SA</span
+            >
+            <span class="account-copy"
+              ><strong id="calendar-user-name">Super Admin</strong
+              ><small id="calendar-user-role">Super Admin</small></span
+            >
+          </div>
+          <a class="logout-link" href="SuperAdminLogin.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M10 17l5-5-5-5M15 12H3M13 4h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"
+              />
+            </svg>
+            <span>Logout</span>
+          </a>
+        </footer>
+      </aside>
+
+      <main class="main-content superadmin-calendar-main" id="main-content">
+        <h1 class="visually-hidden">Campus Event Calendar</h1>
+        <section
+          class="superadmin-calendar-layout"
+          aria-label="Campus event calendar"
+        >
+          <section class="calendar-surface" aria-label="Monthly calendar">
+            <div class="calendar-toolbar">
+              <div class="calendar-selectors">
+                <label class="visually-hidden" for="calendar-month"
+                  >Month</label
+                >
+                <select id="calendar-month" aria-label="Select month"></select>
+                <label class="visually-hidden" for="calendar-year">Year</label>
+                <select id="calendar-year" aria-label="Select year"></select>
+              </div>
+              <div class="calendar-toolbar-spacer" aria-hidden="true"></div>
+              <div class="calendar-navigation">
+                <button type="button" id="calendar-today">Today</button>
+                <button
+                  type="button"
+                  id="calendar-previous"
+                  aria-label="Previous month"
+                >
+                  ←
+                </button>
+                <button
+                  type="button"
+                  id="calendar-next"
+                  aria-label="Next month"
+                >
+                  →
+                </button>
+              </div>
+            </div>
+            <div class="calendar-weekdays" aria-hidden="true">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span
+              ><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div class="calendar-month-grid" id="calendar-month-grid"></div>
+          </section>
+
+          <aside class="calendar-side" aria-label="Calendar information">
+            <section class="calendar-panel upcoming-panel">
+              <h2>Upcoming</h2>
+              <div id="calendar-upcoming-items">
+                <p class="upcoming-empty">Loading events…</p>
+              </div>
+            </section>
+            <section class="calendar-panel filter-panel">
+              <div class="panel-heading">
+                <h2>Filter by category</h2>
+                <button type="button" id="calendar-filter-reset">Reset</button>
+              </div>
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-calendar-source="PUP Official"
+                  checked
+                /><span>PUP Official</span></label
+              >
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-calendar-source="CSC"
+                  checked
+                /><span>CSC</span></label
+              >
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-calendar-source="Teachers / Faculty"
+                  checked
+                /><span>Teachers / Faculty</span></label
+              >
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-calendar-source="Organizational"
+                  checked
+                /><span>Organizational</span></label
+              >
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-calendar-source="Others / External"
+                  checked
+                /><span>Others / External</span></label
+              >
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-calendar-source="Philippine Holiday"
+                  checked
+                /><span>Philippine Holidays</span></label
+              >
+            </section>
+            <section
+              class="calendar-panel calendar-legend"
+              aria-label="Calendar legend"
+            >
+              <h2>Calendar legend</h2>
+              <span class="legend-item"
+                ><i class="legend-dot dot-official" aria-hidden="true"></i>PUP
+                Official</span
+              >
+              <span class="legend-item"
+                ><i class="legend-dot dot-csc" aria-hidden="true"></i>CSC</span
+              >
+              <span class="legend-item"
+                ><i class="legend-dot dot-teacher" aria-hidden="true"></i
+                >Teachers / Faculty</span
+              >
+              <span class="legend-item"
+                ><i class="legend-dot dot-organization" aria-hidden="true"></i
+                >Organizational</span
+              >
+              <span class="legend-item"
+                ><i class="legend-dot dot-external" aria-hidden="true"></i
+                >Others / External</span
+              >
+              <span class="legend-item"
+                ><i class="legend-dot dot-holiday" aria-hidden="true"></i
+                >Philippine Holidays</span
+              >
+            </section>
+          </aside>
+        </section>
+      </main>
+    </div>
+    <div class="calendar-modal-host" id="calendar-modal-host"></div>
+    <script src="../UserStudent/events-data.js"></script>
+    <script src="../EventDetailsModal.js"></script>
+    <script type="module" src="superAdminGuard.js"></script>
+    <script type="module" src="SuperAdminCalendar.js"></script>
+  </body>
+</html>

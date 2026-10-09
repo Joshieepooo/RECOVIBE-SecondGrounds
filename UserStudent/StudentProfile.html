@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Profile & Preferences | RecoVibe - PUP Biñan Campus</title>
+    <meta name="description" content="Update your student profile, academic department, organization memberships, and personalized event preferences." />
+    <link rel="canonical" href="https://yourdomain.com/UserStudent/StudentProfile.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="StudentProfile.css" />
+    <style>
+      @media (max-width: 860px) {
+        .app {
+          flex-direction: column;
+          overflow: visible;
+        }
+        .sidebar,
+        .sidebar.is-collapsed {
+          width: 100%;
+          flex: 0 0 auto;
+          height: auto;
+          min-height: 62px;
+          position: sticky;
+          top: 0;
+          z-index: 40;
+          overflow: visible;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          padding: 10px 12px;
+          gap: 8px;
+        }
+        .sidebar-top {
+          flex: 0 0 auto;
+          min-width: 0;
+          margin-bottom: 0;
+        }
+        .sidebar.is-collapsed .sidebar-top {
+          flex-direction: row;
+        }
+        .sidebar .collapse-btn {
+          display: none;
+        }
+        .brand-text {
+          display: none;
+        }
+        .nav {
+          order: 0;
+          flex: 1 1 auto;
+          flex-direction: row;
+          min-width: 0;
+          overflow-x: auto;
+          gap: 4px;
+          padding-top: 0;
+          scrollbar-width: none;
+        }
+        .nav::-webkit-scrollbar {
+          display: none;
+        }
+        .sidebar.is-collapsed .nav {
+          display: flex;
+        }
+        .sidebar.is-collapsed .brand-text,
+        .sidebar.is-collapsed .nav-label,
+        .sidebar.is-collapsed .user-meta,
+        .sidebar.is-collapsed .nav-badge {
+          display: none;
+        }
+        .nav-item {
+          flex: 0 0 44px;
+          justify-content: center;
+          padding: 10px 8px;
+        }
+        .nav-label {
+          display: none;
+        }
+        .nav-badge {
+          position: absolute;
+          top: 2px;
+          right: 2px;
+          margin-left: 0;
+        }
+        .sidebar-bottom {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          order: 0;
+          margin-top: 0;
+          padding-top: 0;
+          border-top: 0;
+        }
+        .sidebar-bottom .user-card {
+          padding: 4px;
+          margin: 0;
+        }
+        .sidebar-bottom .user-meta {
+          display: none;
+        }
+        .sidebar-bottom .nav-item.logout {
+          flex: 0 0 44px;
+          justify-content: center;
+          padding: 10px 8px;
+        }
+        .main {
+          width: 100%;
+          max-height: none;
+          overflow: visible;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app" id="profilePage">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <div class="brand">
+            <span class="brand-mark">RV</span>
+            <span class="brand-text"
+              ><strong>RecoVibe</strong><small>PUP Biñan Campus</small></span
+            >
+          </div>
+        </div>
+
+        <nav class="nav" id="profileNavigation" aria-label="Primary">
+          <a class="nav-item" href="Dashboard.html" title="Dashboard"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <rect x="2.5" y="2.5" width="6" height="6" rx="1" />
+                <rect x="11.5" y="2.5" width="6" height="6" rx="1" />
+                <rect x="2.5" y="11.5" width="6" height="6" rx="1" />
+                <rect
+                  x="11.5"
+                  y="11.5"
+                  width="6"
+                  height="6"
+                  rx="1"
+                /></svg></span
+            ><span class="nav-label">Dashboard</span></a
+          >
+          <a class="nav-item" href="Events.html" title="Events"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <rect x="2.5" y="4" width="15" height="13" rx="1.5" />
+                <path d="M2.5 8h15M6 2.5v3M14 2.5v3" /></svg></span
+            ><span class="nav-label">Events</span></a
+          >
+          <a class="nav-item" href="Calendar.html" title="Calendar"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <rect x="2.5" y="4" width="15" height="13" rx="1.5" />
+                <path
+                  d="M2.5 8h15M6 2.5v3M14 2.5v3M6.5 11h.1M10 11h.1M13.5 11h.1"
+                /></svg></span
+            ><span class="nav-label">Calendar</span></a
+          >
+          <a
+            class="nav-item"
+            href="Student-Participation.html"
+            title="My Participation"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="7" cy="6" r="2.5" />
+                <path
+                  d="M2.8 16a4.2 4.2 0 0 1 8.4 0M12.5 9a2.3 2.3 0 1 0 0-4.5M13 11.5a4 4 0 0 1 4.2 4.5"
+                /></svg></span
+            ><span class="nav-label">My Participation</span></a
+          >
+          <a class="nav-item" href="Notification.html" title="Notifications"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 14h12l-1.2-1.7V8a4.8 4.8 0 0 0-9.6 0v4.3L4 14Z" />
+                <path d="M8 16a2 2 0 0 0 4 0" /></svg></span
+            ><span class="nav-label">Notifications</span
+            ><span class="nav-badge" id="navNotifBadge"></span
+          ></a>
+          <a
+            class="nav-item is-active"
+            href="StudentProfile.html"
+            title="Profile"
+            aria-current="page"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="10" cy="6.5" r="3" />
+                <path d="M4 17a6 6 0 0 1 12 0" /></svg></span
+            ><span class="nav-label">Profile</span></a
+          >
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="user-card">
+            <div class="avatar" id="userAvatar"></div>
+            <div class="user-meta">
+              <strong class="user-name" id="userName"></strong
+              ><small class="user-role" id="userRole"></small>
+            </div>
+          </div>
+          <a class="nav-item logout" href="StudentLogin.html" title="Logout"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M8 3H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3M12 6l4 4-4 4M7 10h9"
+                /></svg></span
+            ><span class="nav-label">Logout</span></a
+          >
+        </div>
+      </aside>
+
+      <main class="main" id="profileMain">
+        <section
+          class="profile-grid"
+          id="profileContent"
+          aria-label="Profile information"
+        >
+          <article class="panel personal-panel" id="personalInformationPanel">
+            <div class="panel-heading">
+              <div>
+                <h1 id="personalInformationHeading">Personal Information</h1>
+                <div class="account-actions">
+                  <button class="text-button" id="editProfile" type="button">Edit Profile</button>
+                  <button class="button-secondary" id="changePassword" type="button">Change Password</button>
+                </div>
+              </div>
+              <span class="status-dot" id="accountStatus">Account</span>
+            </div>
+            <div class="info-grid">
+              <section class="info-group">
+                <h3>Name</h3>
+                <div class="info-fields">
+                  <dl class="info-field">
+                    <dt>First Name</dt>
+                    <dd id="profileFirstName">Not provided</dd>
+                  </dl>
+                  <dl class="info-field">
+                    <dt>Middle Name</dt>
+                    <dd id="profileMiddleName">Not provided</dd>
+                  </dl>
+                  <dl class="info-field">
+                    <dt>Last Name</dt>
+                    <dd id="profileLastName">Not provided</dd>
+                  </dl>
+                </div>
+              </section>
+              <section class="info-group">
+                <h3>Student Details</h3>
+                <div class="info-fields">
+                  <dl class="info-field info-field--wide">
+                    <dt>Student No.</dt>
+                    <dd id="profileStudentId">Not provided</dd>
+                  </dl>
+                  <dl class="info-field">
+                    <dt>Year</dt>
+                    <dd id="profileYear">Not provided</dd>
+                  </dl>
+                  <dl class="info-field">
+                    <dt>Organization</dt>
+                    <dd id="profileOrganization">Not provided</dd>
+                  </dl>
+                  <dl class="info-field info-field--wide">
+                    <dt>Department</dt>
+                    <dd id="profileDepartment">Not provided</dd>
+                  </dl>
+                </div>
+              </section>
+              <section class="info-group info-group--contact">
+                <h3>Contact</h3>
+                <div class="info-fields">
+                  <dl class="info-field info-field--wide">
+                    <dt>Email Address</dt>
+                    <dd id="profileEmail">Not provided</dd>
+                  </dl>
+                  <dl class="info-field">
+                    <dt>Contact Number</dt>
+                    <dd id="profileContact">Not provided</dd>
+                  </dl>
+                </div>
+              </section>
+            </div>
+            <form class="account-form" id="profileForm" novalidate hidden>
+              <div class="account-form-grid">
+                <div class="form-field" id="field-edit-firstname">
+                  <label for="editFirstName">First Name</label>
+                  <input id="editFirstName" required minlength="2" maxlength="50" autocomplete="given-name" aria-describedby="editFirstNameError" />
+                  <div class="error-msg" id="editFirstNameError" role="alert"></div>
+                </div>
+                <div class="form-field" id="field-edit-middlename">
+                  <label for="editMiddleName">Middle Name</label>
+                  <input id="editMiddleName" minlength="2" maxlength="50" autocomplete="additional-name" aria-describedby="editMiddleNameError" />
+                  <div class="error-msg" id="editMiddleNameError" role="alert"></div>
+                </div>
+                <div class="form-field" id="field-edit-lastname">
+                  <label for="editLastName">Last Name</label>
+                  <input id="editLastName" required minlength="2" maxlength="50" autocomplete="family-name" aria-describedby="editLastNameError" />
+                  <div class="error-msg" id="editLastNameError" role="alert"></div>
+                </div>
+                <div class="form-field" id="field-edit-email">
+                  <label for="editEmail">Email Address</label>
+                  <input id="editEmail" type="email" required maxlength="254" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" aria-describedby="editEmailError" />
+                  <div class="error-msg" id="editEmailError" role="alert"></div>
+                </div>
+                <div class="form-field" id="field-edit-contact">
+                  <label for="editContact">Contact Number</label>
+                  <input id="editContact" type="tel" value="09" required pattern="09[0-9]{9}" maxlength="11" inputmode="numeric" autocomplete="tel" aria-describedby="editContactError" />
+                  <div class="error-msg" id="editContactError" role="alert"></div>
+                </div>
+                <div class="form-field" id="field-edit-department">
+                  <label for="editDepartment">Department</label>
+                  <select id="editDepartment" required aria-describedby="editDepartmentError">
+                    <option value="">Select department</option>
+                    <option value="BSIT" title="Bachelor of Science in Information Technology (BSIT)">
+                      Bachelor of Science in Information Technology (BSIT)
+                    </option>
+                    <option value="BSCPE" title="Bachelor of Science in Computer Engineering (BSCPE)">
+                      Bachelor of Science in Computer Engineering (BSCPE)
+                    </option>
+                    <option value="BSBA" title="Bachelor of Science in Business Administration (BSBA)">
+                      Bachelor of Science in Business Administration (BSBA)
+                    </option>
+                    <option value="BSOA" title="Bachelor of Science in Office Administration (BSOA)">
+                      Bachelor of Science in Office Administration (BSOA)
+                    </option>
+                    <option value="BSHM" title="Bachelor of Science in Hospitality Management (BSHM)">
+                      Bachelor of Science in Hospitality Management (BSHM)
+                    </option>
+                    <option value="Other" title="Other">Other</option>
+                  </select>
+                  <div class="error-msg" id="editDepartmentError" role="alert"></div>
+                </div>
+                <div class="form-field" id="field-edit-year">
+                  <label for="editYear">Year</label>
+                  <input id="editYear" placeholder="2-3" required maxlength="3" inputmode="numeric" aria-describedby="editYearError" />
+                  <div class="error-msg" id="editYearError" role="alert"></div>
+                </div>
+                <div class="form-field" id="field-edit-organization">
+                  <label for="editOrganization">Organization</label>
+                  <select id="editOrganization" required aria-describedby="editOrganizationError">
+                    <option value="">Select organization</option>
+                    <option value="IBITS">IBITS</option>
+                    <option value="ORG">ORG</option>
+                    <option value="None">None</option>
+                  </select>
+                  <div class="error-msg" id="editOrganizationError" role="alert"></div>
+                </div>
+              </div>
+              <p class="account-form-status" id="profileFormStatus" role="status" aria-live="polite"></p>
+              <div class="editor-actions">
+                <button class="button-secondary" id="cancelProfileEdit" type="button">Cancel</button>
+                <button class="button-primary" id="saveProfileBtn" type="submit">Save Profile</button>
+              </div>
+            </form>
+            <form class="account-form" id="passwordForm" hidden>
+              <div class="account-form-grid">
+                <label>Current Password<input id="currentPassword" type="password" required autocomplete="current-password" /></label>
+                <label>New Password<input id="newPassword" type="password" required autocomplete="new-password" /></label>
+                <label>Confirm New Password<input id="confirmPassword" type="password" required autocomplete="new-password" /></label>
+              </div>
+              <p class="account-form-status" id="passwordFormStatus" role="alert" aria-live="polite"></p>
+              <div class="editor-actions">
+                <button class="button-secondary" id="cancelPasswordChange" type="button">Cancel</button>
+                <button class="button-primary" type="submit">Update Password</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="panel preferences-panel" id="preferencesPanel">
+            <div class="panel-heading">
+              <h2 id="preferencesHeading">Preferred Categories</h2>
+              <button class="text-button" id="editPreferences" type="button">
+                Edit Preferences
+              </button>
+            </div>
+            <div class="preference-summary">
+              <div class="preference-chips" id="categorySummary"></div>
+            </div>
+            <div class="preference-editor" id="preferenceEditor" hidden>
+              <h3 id="categoryChoicesHeading">Categories</h3>
+              <div class="choice-grid" id="categoryChoices"></div>
+              <h3 id="sourceChoicesHeading">Event Sources</h3>
+              <div class="choice-grid" id="sourceChoices"></div>
+              <div class="editor-actions">
+                <button
+                  class="button-secondary"
+                  id="cancelPreferences"
+                  type="button"
+                >
+                  Cancel</button
+                ><button
+                  class="button-primary"
+                  id="savePreferences"
+                  type="button"
+                >
+                  Save Preferences
+                </button>
+              </div>
+            </div>
+            <div class="source-summary">
+              <h2 id="sourceSummaryHeading">Preferred Sources</h2>
+              <div class="preference-chips" id="sourceSummary"></div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="notification-count.js"></script>
+    <script type="module" src="StudentProfile.js"></script>
+  </body>
+</html>

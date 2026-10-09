@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Verify Security Code | RecoVibe Super Admin</title>
+    <meta name="description" content="Verify one-time security code to authenticate super administrator password recovery." />
+    <link rel="canonical" href="https://yourdomain.com/UserSuperAdmin/SuperAdminVerifyCode.html" />
+    <link rel="stylesheet" href="SuperAdminForgotPassword.css" />
+  </head>
+  <body>
+    <div class="screen">
+      <div class="side">
+        <img class="mark" src="../UserStudent/Picture/PUPLogo-removebg-preview.png" alt="Polytechnic University of the Philippines Bi&#241;an Campus Seal - RecoVibe" width="80" height="80" decoding="async" loading="lazy" />
+        <div>
+          <h1>RecoVibe Super Admin Portal</h1>
+          <p class="tagline">University, Organization, and Seminar Events.</p>
+        </div>
+      </div>
+      <main class="main">
+        <section class="card flow-card">
+          <a href="SuperAdminForgetPassword.html" class="back-link"
+            >&larr; Back to forgot password</a
+          >
+          <h2>Verify your email</h2>
+          <p class="sub">
+            Enter the 6-digit verification code we sent to your school email.
+          </p>
+          <p class="sub">johnd***@iskolarngbayan.pup.edu.ph</p>
+          <div class="code-inputs" id="code-inputs">
+            <input inputmode="numeric" maxlength="1" /><input
+              inputmode="numeric"
+              maxlength="1"
+            /><input inputmode="numeric" maxlength="1" /><input
+              inputmode="numeric"
+              maxlength="1"
+            /><input inputmode="numeric" maxlength="1" /><input
+              inputmode="numeric"
+              maxlength="1"
+            />
+          </div>
+          <div class="code-help">
+            <span>Didn't receive the code?</span
+            ><button type="button" class="link-btn" id="resend-code">
+              Resend code
+            </button>
+          </div>
+          <button type="button" class="btn-primary" id="verify-code">
+            Verify Code
+          </button>
+          <p class="countdown" id="countdown">Code expires in 05:00</p>
+        </section>
+      </main>
+    </div>
+    <script src="SuperAdminForgotPassword.js"></script>
+  </body>
+</html>

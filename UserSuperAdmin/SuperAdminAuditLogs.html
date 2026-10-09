@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en" data-auth-guard="pending">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#72141c" />
+    <title>System Audit Logs | RecoVibe Super Admin Portal</title>
+    <meta
+      name="description"
+      content="Track system-wide audit logs showing who, what, when, and record changes across PUP Biñan Campus events and users."
+    />
+    <link
+      rel="canonical"
+      href="https://yourdomain.com/UserSuperAdmin/SuperAdminAuditLogs.html"
+    />
+    <link rel="stylesheet" href="superadmin.css" />
+  </head>
+  <body>
+    <div class="superadmin-app">
+      <aside class="sidebar" aria-label="Super admin sidebar">
+        <a
+          class="brand"
+          href="SuperAdminDashboard.html"
+          aria-label="RecoVibe Super Admin home"
+        >
+          <span class="brand-mark" aria-hidden="true">RV</span>
+          <span class="brand-copy"
+            ><strong>RECOVIBE</strong><small>PUP Biñan Campus</small></span
+          >
+        </a>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="SuperAdminDashboard.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" />
+            </svg>
+            <span>Dashboard</span>
+          </a>
+          <a
+            class="nav-link is-active"
+            href="SuperAdminAuditLogs.html"
+            aria-current="page"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 4h8M9 3h6v3H9zM7 5H5v16h14V5h-2M8 11h8M8 15h8" />
+            </svg>
+            <span>Audit Logs</span>
+          </a>
+          <a class="nav-link" href="UserManagement.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="9" cy="8" r="3" />
+              <path
+                d="M3.5 20v-1.5a5.5 5.5 0 0 1 11 0V20zM16 5.5a3 3 0 0 1 0 5.8M17 14a5 5 0 0 1 3.5 4.8V20h-4"
+              />
+            </svg>
+            <span>User Management</span>
+          </a>
+          <a class="nav-link" href="SuperAdminCalendar.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="17" rx="2" />
+              <path d="M8 2v4M16 2v4M3 9h18M8 13h3M8 17h3M15 13h2M15 17h2" />
+            </svg>
+            <span>Calendar</span>
+          </a>
+          <a class="nav-link" href="SuperAdminSystemSettings.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="m19.4 15 .1.1 1.2 1-1.4 2.4-1.5-.6a8 8 0 0 1-1.5.9l-.3 1.6h-2.8l-.3-1.6a8 8 0 0 1-1.5-.9l-1.5.6-1.4-2.4 1.2-1a7 7 0 0 1 0-1.8l-1.2-1 1.4-2.4 1.5.6a8 8 0 0 1 1.5-.9l.3-1.6h2.8l.3 1.6a8 8 0 0 1 1.5.9l1.5-.6 1.4 2.4-1.2 1a7 7 0 0 1-.1 1.7Z"
+                transform="translate(-1 -1)"
+              />
+            </svg>
+            <span>System Settings</span>
+          </a>
+          <a class="nav-link" href="SuperAdminNotifications.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+              />
+            </svg>
+            <span>Notifications</span>
+          </a>
+          <a class="nav-link" href="SuperAdminProfile.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.5" />
+              <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+            </svg>
+            <span>Profile</span>
+          </a>
+        </nav>
+        <footer class="sidebar-footer">
+          <div class="account-summary">
+            <span class="account-badge" aria-hidden="true">SA1</span>
+            <span class="account-copy"
+              ><strong id="superadmin-name">JOSHUA ALEN LOPEZ</strong
+              ><small id="superadmin-role">Super Admin 1</small></span
+            >
+          </div>
+          <a class="logout-link" href="SuperAdminLogin.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M10 17l5-5-5-5M15 12H3M13 4h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"
+              />
+            </svg>
+            <span>Logout</span>
+          </a>
+        </footer>
+      </aside>
+
+      <main class="main-content audit-log-main" id="main-content">
+        <header class="audit-log-page-heading">
+          <h1>Audit Activities</h1>
+        </header>
+        <section class="audit-log-card" aria-labelledby="audit-log-title">
+          <h2 class="visually-hidden" id="audit-log-title">
+            All audit activity
+          </h2>
+          <div class="audit-table-wrap audit-log-table-wrap">
+            <table
+              class="audit-table audit-log-table"
+              id="audit-activity-table"
+              data-audit-table
+            >
+              <caption class="visually-hidden">
+                Super Admin audit activity records
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Timestamp</th>
+                  <th scope="col">User</th>
+                  <th scope="col">Action</th>
+                  <th scope="col">
+                    <span class="visually-hidden">Details</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="audit-activity-rows">
+                <tr id="audit-row-1" data-audit-id="audit-1">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-25T16:00:00+08:00"
+                      ><strong>09/25/26</strong><span>4:00 PM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>A1 – Ms. Sevilla</strong></td>
+                  <td data-label="Action">
+                    <strong>Approves [Event Name]</strong> proposed by IBITS EO
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-1"
+                      aria-label="Open details for A1 – Ms. Sevilla"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-2" data-audit-id="audit-2">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-25T16:27:00+08:00"
+                      ><strong>09/25/26</strong><span>4:27 PM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>A2 – Mr. Arevallo</strong></td>
+                  <td data-label="Action">
+                    <strong>Approves [Event Name]</strong> proposed by IBITS EO
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-2"
+                      aria-label="Open details for A2 – Mr. Arevallo"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-3" data-audit-id="audit-3">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-24T09:32:00+08:00"
+                      ><strong>09/24/26</strong><span>9:32 AM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>IBITS EO</strong></td>
+                  <td data-label="Action">
+                    <strong>Proposed an Event</strong> named [Event Name]
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-3"
+                      aria-label="Open details for IBITS EO"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-4" data-audit-id="audit-4">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-24T16:57:00+08:00"
+                      ><strong>09/24/26</strong><span>4:57 PM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>PIIE EO</strong></td>
+                  <td data-label="Action">
+                    <strong>Proposed Event [Event Name] Started</strong>
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-4"
+                      aria-label="Open details for PIIE EO"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-5" data-audit-id="audit-5">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-24T08:09:00+08:00"
+                      ><strong>09/24/26</strong><span>8:09 AM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>CSC EO</strong></td>
+                  <td data-label="Action">
+                    <strong>Published</strong> the Proposed Event [Event Name]
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-5"
+                      aria-label="Open details for CSC EO"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-6" data-audit-id="audit-6">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-24T22:14:00+08:00"
+                      ><strong>09/24/26</strong><span>10:14 PM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>Mr. Miguel</strong></td>
+                  <td data-label="Action">
+                    <strong>Password Successfully Reset</strong>
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-6"
+                      aria-label="Open details for Mr. Miguel"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-7" data-audit-id="audit-7">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-23T20:30:00+08:00"
+                      ><strong>09/23/26</strong><span>8:30 PM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>Stud142</strong></td>
+                  <td data-label="Action">
+                    Participated in <strong>[Event Name]</strong>
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-7"
+                      aria-label="Open details for Stud142"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-8" data-audit-id="audit-8">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-23T20:30:00+08:00"
+                      ><strong>09/23/26</strong><span>8:30 PM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>Stud004</strong></td>
+                  <td data-label="Action">
+                    Cancels Participation in <strong>[Event Name]</strong>
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-8"
+                      aria-label="Open details for Stud004"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-9" data-audit-id="audit-9">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-23T20:30:00+08:00"
+                      ><strong>09/23/26</strong><span>8:30 PM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>A1 – Ms. Sevilla</strong></td>
+                  <td data-label="Action">
+                    <strong>Rejects [Event Name]</strong> proposed by ACES EO
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-9"
+                      aria-label="Open rejection details for A1 – Ms. Sevilla"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-10" data-audit-id="audit-10">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-23T20:30:00+08:00"
+                      ><strong>09/23/26</strong><span>8:30 PM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>IBITS EO</strong></td>
+                  <td data-label="Action">
+                    Requests a Rescheduling for <strong>[Event Name]</strong>
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-10"
+                      aria-label="Open rescheduling details for IBITS EO"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+                <tr id="audit-row-11" data-audit-id="audit-11">
+                  <td data-label="Timestamp">
+                    <time datetime="2026-09-23T20:30:00+08:00"
+                      ><strong>09/23/26</strong><span>8:30 PM</span></time
+                    >
+                  </td>
+                  <td data-label="User"><strong>Stud986</strong></td>
+                  <td data-label="Action">
+                    Wants to <strong>Participate</strong> in [Event Name]
+                  </td>
+                  <td class="audit-action-cell">
+                    <button
+                      class="audit-detail-button"
+                      type="button"
+                      data-audit-detail="audit-11"
+                      aria-label="Open participation request details for Stud986"
+                    >
+                      <span aria-hidden="true">▶</span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog
+      class="audit-dialog"
+      id="audit-detail-modal"
+      aria-labelledby="audit-modal-title"
+    >
+      <div class="audit-dialog-content">
+        <header class="audit-dialog-header">
+          <p class="audit-dialog-kicker">Audit Activity Details</p>
+          <h2 id="audit-modal-title"></h2>
+        </header>
+        <div class="audit-detail-body">
+          <dl class="audit-detail-grid">
+            <div id="row-action">
+              <dt>Action:</dt>
+              <dd id="audit-detail-action"></dd>
+            </div>
+            <div id="row-performed-by">
+              <dt>Performed By:</dt>
+              <dd id="audit-detail-performed-by"></dd>
+            </div>
+            <div id="row-date-time">
+              <dt>Date &amp; Time:</dt>
+              <dd id="audit-detail-date-time"></dd>
+            </div>
+            <div id="row-category">
+              <dt>Category:</dt>
+              <dd id="audit-detail-category"></dd>
+            </div>
+            <div id="row-event" hidden>
+              <dt>Event:</dt>
+              <dd id="audit-detail-event"></dd>
+            </div>
+            <div id="row-organizer" hidden>
+              <dt>Event Organizer:</dt>
+              <dd>
+                <span id="audit-detail-organizer"></span
+                ><small
+                  class="audit-organizer-role"
+                  id="audit-detail-organizer-role"
+                ></small>
+              </dd>
+            </div>
+            <div id="row-previous-status" hidden>
+              <dt>Previous Status:</dt>
+              <dd id="audit-detail-previous-status"></dd>
+            </div>
+            <div id="row-new-status" hidden>
+              <dt>New Status:</dt>
+              <dd id="audit-detail-new-status"></dd>
+            </div>
+          </dl>
+          <section
+            class="audit-detail-description"
+            id="audit-description-section"
+            hidden
+          >
+            <h3>Additional Details:</h3>
+            <p id="audit-detail-description"></p>
+          </section>
+        </div>
+        <div class="audit-dialog-actions">
+          <a
+            class="audit-dialog-button view-event-button"
+            id="audit-view-event"
+            href="#"
+            hidden
+            >View Event</a
+          >
+          <button
+            class="audit-dialog-button close-audit-button"
+            id="audit-close-modal"
+            type="button"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </dialog>
+    <script type="module" src="superAdminGuard.js"></script>
+    <script type="module" src="SuperAdminDashboard.js"></script>
+  </body>
+</html>
