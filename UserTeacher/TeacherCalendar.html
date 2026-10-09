@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google-calendar-api-key" content="YOUR_GOOGLE_CALENDAR_API_KEY" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Teacher Event Calendar | RecoVibe - PUP Biñan Campus</title>
+    <meta name="description" content="Faculty calendar synchronized with PUP academic events, allowing teachers to schedule and monitor campus activities." />
+    <link rel="canonical" href="https://yourdomain.com/UserTeacher/TeacherCalendar.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="TeacherCalendar.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      aria-hidden="true"
+      focusable="false"
+      style="position: absolute; overflow: hidden"
+    >
+      <symbol id="teacher-icon-dashboard" viewBox="0 0 20 20">
+        <g fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="2.5" y="2.5" width="6" height="6" rx="1" />
+          <rect x="11.5" y="2.5" width="6" height="6" rx="1" />
+          <rect x="2.5" y="11.5" width="6" height="6" rx="1" />
+          <rect x="11.5" y="11.5" width="6" height="6" rx="1" />
+        </g>
+      </symbol>
+      <symbol id="teacher-icon-events" viewBox="0 0 20 20">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="2.5" y="4" width="15" height="13" rx="1.5" />
+          <path d="M2.5 8h15M6 2.5v3M14 2.5v3" />
+        </g>
+      </symbol>
+      <symbol id="teacher-icon-calendar" viewBox="0 0 20 20">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="2.5" y="4" width="15" height="13" rx="1.5" />
+          <path d="M2.5 8h15M6 2.5v3M14 2.5v3M6.5 11h.1M10 11h.1M13.5 11h.1" />
+        </g>
+      </symbol>
+      <symbol id="teacher-icon-create" viewBox="0 0 20 20">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="3" width="14" height="14" rx="2" />
+          <path d="M10 6v8M6 10h8" />
+        </g>
+      </symbol>
+      <symbol id="teacher-icon-my-events" viewBox="0 0 20 20">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M4 4.5h12v11H4zM7 2.5v4M13 2.5v4M4 8h12M7 11h.1M10 11h.1M13 11h.1M7 14h.1M10 14h.1"
+          />
+        </g>
+      </symbol>
+      <symbol id="teacher-icon-notifications" viewBox="0 0 20 20">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 14h12l-1.2-1.7V8a4.8 4.8 0 0 0-9.6 0v4.3L4 14Z" />
+          <path d="M8 16a2 2 0 0 0 4 0" />
+        </g>
+      </symbol>
+      <symbol id="teacher-icon-profile" viewBox="0 0 20 20">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="10" cy="6.5" r="3" />
+          <path d="M4 17a6 6 0 0 1 12 0" />
+        </g>
+      </symbol>
+      <symbol id="teacher-icon-logout" viewBox="0 0 20 20">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M8 17H4.8A1.8 1.8 0 0 1 3 15.2V4.8A1.8 1.8 0 0 1 4.8 3H8M13 13.5 17 10l-4-3.5M7.5 10H17"
+          />
+        </g>
+      </symbol>
+    </svg>
+    <div class="organizer-app">
+      <aside class="organizer-sidebar">
+        <div class="organizer-brand">
+          <span class="organizer-brand-mark">RV</span
+          ><span class="organizer-brand-copy"
+            ><strong>RecoVibe</strong><small>PUP Biñan Campus</small></span
+          >
+        </div>
+        <nav class="organizer-nav" aria-label="Teacher navigation">
+          <a href="TeacherDashBoard.html"
+            ><span class="organizer-nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="#teacher-icon-dashboard" /></svg></span
+            ><span>Dashboard</span></a
+          ><a href="TeacherAllEvent.html"
+            ><span class="organizer-nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="#teacher-icon-events" /></svg></span
+            ><span>All Events</span></a
+          ><a class="is-active" href="TeacherCalendar.html"
+            ><span class="organizer-nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="#teacher-icon-calendar" /></svg></span
+            ><span>Calendar</span></a
+          ><a href="TeacherCreate.html"
+            ><span class="organizer-nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="#teacher-icon-create" /></svg></span
+            ><span>Create Event</span></a
+          ><a href="TeacherMyEvent.html"
+            ><span class="organizer-nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="#teacher-icon-my-events" /></svg></span
+            ><span>My Events</span></a
+          ><a href="TeacherNotification.html"
+            ><span class="organizer-nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="#teacher-icon-notifications" /></svg></span
+            ><span>Notifications</span
+            ><span class="nav-badge" id="navNotifBadge" hidden></span></a
+          ><a href="TeacherProfile.html"
+            ><span class="organizer-nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="#teacher-icon-profile" /></svg></span
+            ><span>Profile</span></a
+          >
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="user-card">
+            <div class="avatar" id="teacherCalendarAvatar">T</div>
+            <div class="user-meta">
+              <div class="user-name" id="teacherCalendarName">Teacher</div>
+              <div class="user-role" id="teacherCalendarRole">
+                Faculty account
+              </div>
+            </div>
+          </div>
+          <a
+            class="nav-item logout"
+            href="TeacherLogin.html"
+            id="teacherCalendarLogout"
+            title="Logout"
+            ><span class="nav-icon"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <use href="#teacher-icon-logout" /></svg></span
+            ><span class="nav-label">Logout</span></a
+          >
+        </div>
+      </aside>
+      <main class="organizer-main" id="organizerCalendarMain">
+        <h1 class="sr-only">Teacher Event Calendar</h1>
+        <h2 class="sr-only">Calendar Schedule and Filters</h2>
+        <div class="calendar-layout">
+          <section class="calendar-page" id="organizerCalendarSection">
+            <div class="cal-nav" id="calendarToolbar">
+              <div class="cal-left-controls">
+                <select
+                  id="calMonthSelect"
+                  class="cal-select"
+                  aria-label="Select month"
+                ></select>
+                <select
+                  id="calYearSelect"
+                  class="cal-year-select"
+                  aria-label="Select year"
+                >
+                  <option>2026</option>
+                </select>
+              </div>
+              <div class="cal-center-controls">
+                <button class="cal-toggle" type="button">Today</button>
+                <button
+                  class="cal-arrow"
+                  id="calFullPrev"
+                  type="button"
+                  aria-label="Previous month"
+                >
+                  &larr;
+                </button>
+                <button
+                  class="cal-arrow"
+                  id="calFullNext"
+                  type="button"
+                  aria-label="Next month"
+                >
+                  &rarr;
+                </button>
+              </div>
+            </div>
+            <div class="cal-grid cal-grid--dow">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span
+              ><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div class="cal-grid cal-grid--full" id="calFullDays"></div>
+          </section>
+
+          <aside class="calendar-side">
+            <section class="calendar-side-panel upcoming-panel">
+              <h3>Upcoming</h3>
+              <div class="upcoming-item">
+                <div class="upcoming-date">
+                  <span>25</span><small>SEP</small>
+                </div>
+                <div class="upcoming-copy">
+                  <strong>Org Fair &amp; Booth Setup</strong>
+                  <span>Event Organizer</span>
+                </div>
+              </div>
+              <div class="upcoming-item">
+                <div class="upcoming-date">
+                  <span>25</span><small>SEP</small>
+                </div>
+                <div class="upcoming-copy">
+                  <strong>CITE Tech Seminar</strong>
+                  <span>PUP CITE</span>
+                </div>
+              </div>
+              <div class="upcoming-item">
+                <div class="upcoming-date">
+                  <span>25</span><small>SEP</small>
+                </div>
+                <div class="upcoming-copy">
+                  <strong>Blood Donation Drive</strong>
+                  <span>PUP Official</span>
+                </div>
+              </div>
+              <div class="upcoming-item">
+                <div class="upcoming-date">
+                  <span>28</span><small>SEP</small>
+                </div>
+                <div class="upcoming-copy">
+                  <strong>Alumni Homecoming Planning</strong>
+                  <span>Event Organizer</span>
+                </div>
+              </div>
+              <div class="upcoming-item">
+                <div class="upcoming-date">
+                  <span>3</span><small>OCT</small>
+                </div>
+                <div class="upcoming-copy">
+                  <strong>IT Congress General Assembly</strong>
+                  <span>Event Organizer</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="calendar-side-panel filter-panel">
+              <div class="panel-header">
+                <h3>Filter by category</h3>
+                <button id="resetCalendarFilters" type="button">Reset</button>
+              </div>
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-event-source="PUP Official"
+                  checked
+                /><span>PUP Official</span></label
+              >
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-event-source="PUP Biñan"
+                  checked
+                /><span>PUP Biñan</span></label
+              >
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-event-source="PUP CITE"
+                  checked
+                /><span>PUP CITE</span></label
+              >
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-event-source="Event Organizer"
+                  checked
+                /><span>Event Organizer</span></label
+              >
+              <label class="filter-option"
+                ><input
+                  type="checkbox"
+                  data-event-source="Others / External"
+                  checked
+                /><span>Others / External</span></label
+              >
+            </section>
+            <section
+              class="calendar-side-panel cal-legend"
+              id="calendarLegend"
+              data-calendar-legend="teacher"
+              aria-label="Calendar legend"
+            >
+              <span class="legend-title">Calendar legend</span>
+              <span class="legend-item"><span class="dot dot-official" aria-hidden="true"></span>PUP Official</span>
+              <span class="legend-item"><span class="dot dot-binan" aria-hidden="true"></span>PUP Biñan</span>
+              <span class="legend-item"><span class="dot dot-cite" aria-hidden="true"></span>PUP CITE</span>
+              <span class="legend-item"><span class="dot dot-organizer" aria-hidden="true"></span>Event Organizer</span>
+              <span class="legend-item"><span class="dot dot-external" aria-hidden="true"></span>Others/External</span>
+              <span class="legend-item"><span class="dot dot-holiday" aria-hidden="true"></span>Philippine Holiday</span>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+    <div class="modal-overlay event-detail-overlay" id="organizerModalOverlay">
+      <article
+        class="modal event-detail-reference"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="organizerModalTitle"
+      >
+        <button
+          class="modal-close"
+          id="organizerModalClose"
+          type="button"
+          aria-label="Close"
+        >
+          &times;
+        </button>
+        <div class="modal-tag" id="organizerModalTag"></div>
+        <h3 id="organizerModalTitle"></h3>
+        <p class="modal-row" id="organizerModalDate"></p>
+        <p class="modal-row" id="organizerModalTime"></p>
+        <p class="modal-row" id="organizerModalLocation"></p>
+        <p class="modal-desc" id="organizerModalDescription"></p>
+        <div class="modal-foot">
+          <span class="modal-slots" id="organizerModalSlots"></span
+          ><a
+            class="btn-primary"
+            id="organizerModalEdit"
+            href="TeacherAllEvent.html"
+            >View Event</a
+          >
+        </div>
+      </article>
+    </div>
+    <div class="modal-overlay" id="organizerDayOverlay">
+      <article
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="organizerDayTitle"
+      >
+        <button
+          class="modal-close"
+          id="organizerDayClose"
+          type="button"
+          aria-label="Close"
+        >
+          &times;
+        </button>
+        <h3 id="organizerDayTitle"></h3>
+        <div class="day-modal-list" id="organizerDayList"></div>
+      </article>
+    </div>
+    <script src="../UserStudent/events-data.js"></script>
+    <script src="../EventDetailsModal.js"></script>
+    <script src="../CalendarShell.js"></script>
+    <script type="module" src="TeacherCalendar.js"></script>
+    <script src="TeacherNotification.js"></script>
+  </body>
+</html>

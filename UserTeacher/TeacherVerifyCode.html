@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Verify Security Code | RecoVibe Teacher Portal</title>
+    <meta name="description" content="Authenticate your identity with your one-time verification code to reset your teacher account password." />
+    <link rel="canonical" href="https://yourdomain.com/UserTeacher/TeacherVerifyCode.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="TeacherForgotPassword.css" />
+  </head>
+  <body>
+    <div class="screen">
+      <div class="side">
+        <img class="mark" src="../UserStudent/Picture/PUPLogo-removebg-preview.png" alt="Polytechnic University of the Philippines Bi&#241;an Campus Seal - RecoVibe" width="80" height="80" decoding="async" loading="lazy" />
+        <div>
+          <h1>RecoVibe Teacher Portal</h1>
+          <p class="tagline">University, Organization, and Seminar Events.</p>
+        </div>
+      </div>
+      <main class="main">
+        <section class="card flow-card">
+          <a href="TeacherForgetPassword.html" class="back-link"
+            >< Back to forgot password</a
+          >
+          <h2>Verify your email</h2>
+          <p class="sub">
+            Enter the 6-digit verification code we sent to your email.
+          </p>
+          <p class="sub" id="reset-email-label"></p>
+          <p
+            class="match-message"
+            id="verify-status"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <div class="code-inputs" id="code-inputs">
+            <input
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Digit 1"
+            /><input
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Digit 2"
+            /><input
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Digit 3"
+            /><input
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Digit 4"
+            /><input
+              inputmode="numeric"
+              maxlength="1"
+              aria-label="Digit 5"
+            /><input inputmode="numeric" maxlength="1" aria-label="Digit 6" />
+          </div>
+          <div class="code-help">
+            <span>Didn't receive the code?</span
+            ><button type="button" class="link-btn" id="resend-code">
+              Resend code
+            </button>
+          </div>
+          <button type="button" class="btn-primary" id="verify-code">
+            Verify Code
+          </button>
+          <p class="countdown" id="countdown">Code expires in 05:00</p>
+        </section>
+      </main>
+    </div>
+    <script src="TeacherForgotPassword.js"></script>
+  </body>
+</html>
